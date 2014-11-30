@@ -1,0 +1,10797 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass ctex-book
+\begin_preamble
+% 如果没有这一句命令，XeTeX会出错，原因参见
+% http://bbs.ctex.org/viewthread.php?tid=60547
+\DeclareRobustCommand\nobreakspace{\leavevmode\nobreak\ }
+
+\usepackage{algpseudocode}
+\end_preamble
+\options UTF8,winfonts
+\use_default_options true
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 0
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\boxbgcolor #aaaa7f
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+算法笔记
+\end_layout
+
+\begin_layout Author
+http://www.csie.ntnu.edu.tw/
+\end_layout
+
+\begin_layout Section*
+关于算法笔记
+\end_layout
+
+\begin_layout Subsection*
+本站介绍
+\end_layout
+
+\begin_layout Standard
+本站数据是基于分享的精神，一字一句累积起来的。个人希望藉由此站，分享所学所得，支持计算器科学发展。
+\end_layout
+
+\begin_layout Standard
+本站尚处创建阶段，内容不够详尽周全。各位读者若发现错误，欢迎利用留言板告知，俾能改正，十分感谢。
+\end_layout
+
+\begin_layout Standard
+大家可以自行撷取本站的图文作各种用途。想想天地，摸摸良心，不要拿去为非作歹、谋取私利就可以了。 
+\end_layout
+
+\begin_layout Subsection*
+工作项目
+\end_layout
+
+\begin_layout Subsubsection*
+过去工作项目
+\end_layout
+
+\begin_layout Enumerate
+提供算法教学数据。将常见的算法分门别类、编纂目录，归纳一套完整的理论系统。
+\end_layout
+
+\begin_layout Enumerate
+推广算法解题。收集大量的算法练习题目，穿插于本站的教学数据当中，例如 
+\begin_inset CommandInset href
+LatexCommand href
+name "UVa Online Judge"
+target "http://uva.onlinejudge.org/"
+
+\end_inset
+
+，藉此提升学生的程序设计能力。
+\end_layout
+
+\begin_layout Enumerate
+宣传算法竞赛。例如 
+\begin_inset CommandInset href
+LatexCommand href
+name "ACM-ICPC"
+target "http://icpc.baylor.edu/"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "Google Code Jam"
+target "http://code.google.com/codejam/"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "TopCoder Open"
+target "http://community.topcoder.com/tco13/"
+
+\end_inset
+
+ 等等，增加学生的国际交流经验。
+\end_layout
+
+\begin_layout Enumerate
+出版算法设计的书籍：
+\begin_inset CommandInset href
+LatexCommand href
+name "培养与锻炼……基础入门"
+target "http://www.drmaster.com.tw/Bookinfo.asp?BookID=PG21318"
+
+\end_inset
+
+，推广算法设计的观念。书中内容现在已经汇整至网站上了。
+\end_layout
+
+\begin_layout Enumerate
+引进国外学校有教，但是国内学校没有教的算法。例如
+\begin_inset CommandInset href
+LatexCommand href
+name "高等数据结构"
+target "http://courses.csail.mit.edu/6.851/"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "高等算法"
+target "http://courses.csail.mit.edu/6.854/"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "图论算法"
+target "http://www.ics.uci.edu/~eppstein/163/"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "组合优化"
+target "http://www-math.mit.edu/~goemans/teaching.html"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "计算几何"
+target "http://cs.smith.edu/~orourke/"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "字符串学"
+target "http://www.inf.kcl.ac.uk/staff/mac/"
+
+\end_inset
+
+等等，将重要的算法知识介绍给国内学子。
+\end_layout
+
+\begin_layout Subsubsection*
+当前工作项目
+\end_layout
+
+\begin_layout Enumerate
+介绍
+\begin_inset CommandInset href
+LatexCommand href
+name "计算机科学"
+target "http://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6"
+
+\end_inset
+
+的应用。收集相关影片，让大众了解计算机科学有什么功用、计算机科学如何改善生活环境。
+\end_layout
+
+\begin_layout Enumerate
+整理媒体算法。例如
+\begin_inset CommandInset href
+LatexCommand href
+name "文字处理"
+target "http://en.wikipedia.org/wiki/Text_processing"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "声音处理"
+target "http://en.wikipedia.org/wiki/Audio_signal_processing"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "图像处理"
+target "http://en.wikipedia.org/wiki/Image_processing"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "计算机绘图"
+target "http://en.wikipedia.org/wiki/Computer_graphics"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "计算机视觉"
+target "http://en.wikipedia.org/wiki/Computer_vision"
+
+\end_inset
+
+以及各种进阶领域，拓展信息人的视野。
+\end_layout
+
+\begin_layout Subsubsection*
+预计工作项目
+\end_layout
+
+\begin_layout Enumerate
+将网站译为其它语言，让更多人可以获取网站资源。
+\end_layout
+
+\begin_layout Enumerate
+汇整各种计算机科学领域所对应的软件公司，藉此促进人才媒合，也藉此让在学学生了解产业现况、培养志向。
+\end_layout
+
+\begin_layout Enumerate
+探讨如何运用计算机科学改善社会问题、增进民众福祉。
+\end_layout
+
+\begin_layout Subsection*
+资助算法笔记
+\end_layout
+
+\begin_layout Standard
+站长家庭经济状况不佳，日子过得清澹。如果每个月有稳定薪资，就不必烦恼经济问题──然而没有人提供编写算法笔记的工作，站长必须常常分神去从事其它工作。
+\end_layout
+
+\begin_layout Standard
+理想的方式，是由政府或富人，每月固定资助新台币 35000 元做为薪资，让站长可以全心投入算法笔记。愿意资助的朋友，请来信 algorithm.notes@gma
+il.com 。 
+\end_layout
+
+\begin_layout Standard
+站长的眼睛已经渐渐好转，现在可以长时间使用计算机，不过写程序的话还是太吃力了。因此麻烦大家别再推荐程序开发的工作了！ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Algorithm
+\end_layout
+
+\begin_layout Chapter
+Algorithm
+\end_layout
+
+\begin_layout Section
+Algorithm
+\end_layout
+
+\begin_layout Subsection
+算法是什么
+\end_layout
+
+\begin_layout Standard
+算法是资讯工程系非常重要的基础科目。简单来说，算法就是用计算机算数学的学问（古代人用算盘算、现代人用计算机算），可以说是数学科目。
+\end_layout
+
+\begin_layout Standard
+想要解决现实生活当中的各种问题，计算机科学家就把现实问题对应到数学问题，然后设计公式、把公式写成程序，让计算机执行程序计算答案──这些公式就叫做算法了。
+\end_layout
+
+\begin_layout Standard
+尽管这里用了「公式」这个字眼来形容算法，然而并不是各位印象中的数学公式。由于计算机能够执行繁复的计算，所以公式可以设计成好几十行、好几百行，甚至用到很多数学理论
+。
+\end_layout
+
+\begin_layout Standard
+因此呢，就算学习过算法的人，也不见得懂得设计算法；因为数学、程序的东西实在太复杂了。想把现实问题对应到数学问题，那就更复杂了。
+\end_layout
+
+\begin_layout Subsection
+计算机只会算数字
+\end_layout
+
+\begin_layout Standard
+回过头来，计算机又是什么？计算机是个很潮的中文翻译，不过实际上计算机的原意是「计算机」。计算机的英文叫做 computer ，而计算的英文就叫做
+ compute 。 计算机是一台计算机，只会计算、判断、储存数字。又快又准。 程序是一连串计算、判断、储存数字的步骤。 计算机只会处理数字（二进制数）。计算机
+里的每一个文字、每一种颜色、每一种声音，其实都有相对应的数字。 打个比方，我们规定：用 1 代表「一」，用 2 代表「乙」，用 3 代表「人」，……。一个数字对
+应一个中文字。计算机里面的所有中文字，都依循人为规定，变作了数字。 再打个比方，「人」这个字，呈现计算机屏幕上是个「人」样。计算机屏幕的画面，是由许多小光点组成
+的；计算机屏幕上的「人」也是由许多小光点组成的。我们以「人」的左下角为坐标原点，横向为 X 轴，直向为 Y 轴，那么「人」其实是 (0,1) 、
+ (1,2) 、 (2,3) 、 ...
+ 这些坐标画上黑点后所形成的。「人」这个字的的形状，在计算机中变作了一连串的数字。
+\end_layout
+
+\begin_layout Standard
+同样的道理，呈现在计算机屏幕画面上的文字、颜色、图片、影像、声音，全部都可以化作数字。一切事物在计算机里面都是数字。 计算机并没有想象中的那么神奇。不过计算机最
+厉害的地方并不是计算机本身，而是在于计算机可以接上各式各样的设备。接上摄影机与屏幕，就可以把色彩变成数字、把数字变成色彩；接上麦克风与耳机，就可以把声音变成数字
+、把数字变成声音。
+\end_layout
+
+\begin_layout Standard
+计算机一旦接上了设备，就额外有用处。接上话机和基地台，就可以互通有无；接上数字相机和打印机，就可以制造回忆；接上重量仪和筛子，计算机也会拣土豆；接上车厢、接上警
+示灯、再杂七杂八接上一堆东西，就变成了大众运输系统。
+\end_layout
+
+\begin_layout Standard
+若要用计算机解决现实问题，通常要考虑两个方面：一、计算机应该接上那些设备？如何用计算机控制这些设备？二、现实问题如何对应到数学问题？如何设计算法？
+ 
+\end_layout
+
+\begin_layout Subsection
+程序用来比对数字、改变数字、储存数字
+\end_layout
+
+\begin_layout Standard
+举个例子，我们希望把屏幕上的「人」变成斜体字。过程大略是这样──首先呢，把「人」的形状 (0,1) 、 (1,2) 、 (2,3) 、 ...
+ 这些数字拿出来；然后呢，位置越高的坐标，就往右移动多一点，如此一来就成为斜体字了。想让坐标往右移动，就是让计算机做数字加法计算，然后把相加结果储存起来。
+\end_layout
+
+\begin_layout Standard
+再举个例子，用鼠标点选一个文件夹，文件夹的颜色会反白。过程大略是这样──首先呢，计算机侦测到鼠标点击的坐标之后，把坐标转换成数字；然后呢，再把屏幕画面的数据拿出
+来，看看屏幕上每个东西的坐标，是哪一个与鼠标的坐标相符合；噢，原来是一个文件夹的图标，把文件夹的显示颜色给反白过来。
+\end_layout
+
+\begin_layout Standard
+再举个例子，计算机据说会拣选土豆。过程大略是这样──把每一颗土豆拿出来，利用特殊的仪器，把形状、重量、色泽、气味统统转换成数字，储存在计算机里面；然后呢，用计算
+机比较这些数字，找出优良的土豆，如此一来就有绵绵松松的土豆了！ 编写程序，计算数字，这就是程序设计师的工作。 
+\end_layout
+
+\begin_layout Subsection
+数学和程序这么复杂，为什么要用计算机解决现实问题？
+\end_layout
+
+\begin_layout Standard
+计算机的计算速度可说是非常的快，一秒钟可以进行好几千万次。就算文字多么的多，图片多么的大，计算机处理起来，也是轻松写意，顺畅无比。
+\end_layout
+
+\begin_layout Standard
+打开计算机里的任何一份文件，用鼠标卷动一下文件画面，眼睛都还没眨一下，正确画面马上就呈现在屏幕上了。事实上在卷动画面的时候，计算机已经经过几千万次的计算，仅使用
+了极短的时间，就把屏幕上应该呈现的数据全部计算好了。
+\end_layout
+
+\begin_layout Standard
+人类会想要用计算机解决问题，正是仰赖计算机的计算速度、正确性，以及计算机会自动按照程序计算的特性。程序设计师只要花心思写出一支好程序，接下来的工作就可以让计算机
+代劳了。计算机做的比人类更快更好，计算机做得到人类做不到的事情；尽管数学和程序很复杂，还是有很多人选择使用计算机解决问题。 
+\end_layout
+
+\begin_layout Section
+Algorithm
+\end_layout
+
+\begin_layout Subsection
+算法是什么？
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+name "算法"
+target "http://zh.wikipedia.org/wiki/%E6%BC%94%E7%AE%97%E6%B3%95"
+
+\end_inset
+
+由三个部分组成：输入、计算步骤、输出。介绍这件事情的时候，有人连结到
+\begin_inset CommandInset href
+LatexCommand href
+name "函数"
+target "http://zh.wikipedia.org/wiki/%E5%87%BD%E6%95%B8"
+
+\end_inset
+
+的概念，也有人连结到
+\begin_inset CommandInset href
+LatexCommand href
+name "黑箱白箱"
+target "http://zh.wikipedia.org/wiki/%E9%BB%91%E7%AE%B1"
+
+\end_inset
+
+的概念。
+\end_layout
+
+\begin_layout Standard
+输出、输入是一堆数字。实务上是将这些数据放在数据结构，例如 array 、 linked list 。
+\end_layout
+
+\begin_layout Standard
+输入数据的来源，通常是硬盘里面储存的档案，或者是藉由硬件装置撷取到的数据，例如数字相机、麦克风等等。输出数据的去处，通常是硬盘里面储存的档案，或者是藉由硬件装置
+转换之后以其它型态呈现，例如数字电视、数字音响等等。 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+加法的算法
+\end_layout
+
+\begin_layout Plain Layout
+a --- [ ] ---> c 
+\end_layout
+
+\begin_layout Plain Layout
+b ---
+\end_layout
+
+\begin_layout Plain Layout
+例如
+\end_layout
+
+\begin_layout Plain Layout
+5 --- [ ] ---> 8 
+\end_layout
+
+\begin_layout Plain Layout
+3 --- 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+计算步骤有两种类型，一类是运算，例如数学运算加减乘除、逻辑运算且或非、比较运算大于等于小于。另一类是读写，例如读取某处的数字、储存数字至某处，就跟计算机的
+ MR 、 M+ 按键的意义相似。
+\end_layout
+
+\begin_layout Standard
+古人定义算法，规定计算步骤的数量是必须是有限步，不是无限步。用程序语言的术语来说就是：算法不能有无穷循环。
+\end_layout
+
+\begin_layout Standard
+古人当初规定有限步，是为了方便统计总步数。但是实务上，很多计算机程序是开启之后就保持执行状态，直到当机、重开机，例如网络传输的算法。因此实务上可以是无限步。
+ 
+\end_layout
+
+\begin_layout Subsection
+如何记载一个算法？
+\end_layout
+
+\begin_layout Standard
+有人用
+\begin_inset CommandInset href
+LatexCommand href
+name "伪码"
+target "http://zh.wikipedia.org/wiki/%E4%BC%AA%E4%BB%A3%E7%A0%81"
+
+\end_inset
+
+来记载一个算法。如要设计
+\begin_inset CommandInset href
+LatexCommand href
+name "计算机程序"
+target "http://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F"
+
+\end_inset
+
+，伪码是比较恰当的。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Procedure{Greatest
+\backslash
+_{}Common
+\backslash
+_{}Divisor}{$a,b$}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+While{$a
+\backslash
+neq b$}
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+If{$a > b$}
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+State $a
+\backslash
+gets a-b$
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+Else
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+State $b
+\backslash
+gets b-a$
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+EndWhile
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State 
+\backslash
+textbf{return} $a$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndProcedure
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+有人用流程图来记载一个算法。如要设计电子电路，流程图是比较恰当的。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Euclid_flowchart_1.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+大多数时候，我们无法光从伪码和流程图彻底理解算法，就如同我们无法光从数学公式彻底理解数学概念。想要理解算法，通常还是得藉由文字、图片的辅助说明。
+\end_layout
+
+\begin_layout Subsection
+如何实作一个算法？
+\end_layout
+
+\begin_layout Standard
+实作的意思是：实际去操作、实际去运行。对于资工系学生来说，自然就是把算法撰写成计算机程序，例如 C 或者 C++ 程序语言，然后在个人计算机上面执行程序。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int gcd(int a, int b) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (a != b)
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (a > b)
+\end_layout
+
+\begin_layout Plain Layout
+
+            a -= b;
+\end_layout
+
+\begin_layout Plain Layout
+
+        else
+\end_layout
+
+\begin_layout Plain Layout
+
+            b -= a;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return a;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+对于电机系学生来说，自然就是把算法设计成
+\begin_inset CommandInset href
+LatexCommand href
+name "电子电路"
+target "http://zh.wikipedia.org/wiki/%E9%9B%BB%E5%AD%90%E9%9B%BB%E8%B7%AF"
+
+\end_inset
+
+，在
+\begin_inset CommandInset href
+LatexCommand href
+name "面包板"
+target "http://zh.wikipedia.org/wiki/%E9%9D%A2%E5%8C%85%E6%9D%BF"
+
+\end_inset
+
+、
+\begin_inset CommandInset href
+LatexCommand href
+name "印刷电路板"
+target "http://zh.wikipedia.org/wiki/%E5%8D%B0%E5%88%B7%E9%9B%BB%E8%B7%AF%E6%9D%BF"
+
+\end_inset
+
+、 
+\begin_inset CommandInset href
+LatexCommand href
+name "PLD"
+target "http://zh.wikipedia.org/wiki/%E5%8F%AF%E7%A8%8B%E5%BC%8F%E9%82%8F%E8%BC%AF%E8%A3%9D%E7%BD%AE"
+
+\end_inset
+
+ 上面执行。
+\end_layout
+
+\begin_layout Standard
+电子电路也有加法器、减法器、 AND 逻辑闸、 OR 逻辑闸等等，所以也可以用电子电路实作算法。例如电子表、随身听、悠游卡等等，都是直接将算法做死在芯片上面。在
+个人计算机、智能型手机还没流行之前，以往都是用电子电路实作算法。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Graphics
+	filename images/fig34_large.jpg
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+电子电路的执行速度是飞快的，计算机程序的执行速度慢了一点。制作电子电路的过程相当麻烦，需要精密的设备、复杂的制程、大量的人力和经费，而且制成之后就无法修改；但是
+写程序就简单轻松多了。相对地，在计算机上面很容易调整程序代码，又可以储存很多程序代码，最主要的是家家户户都有计算机。
+\end_layout
+
+\begin_layout Subsection
+时间复杂度、空间复杂度
+\end_layout
+
+\begin_layout Standard
+要评断一个算法的好坏，最基本的指标是时间和空间。
+\end_layout
+
+\begin_layout Standard
+最直觉的方式，就是测量程序的执行时间、程序的内存使用量。但是由于同一个算法在不同计算机上面的执行时间稍有差异，又由于每个人实作算法所采用的程序语言、程序设计技巧
+都不一样，所以执行时间、内存使用量不是一个稳定的评断标准。
+\end_layout
+
+\begin_layout Standard
+数学家于是计算步骤数量。 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Procedure{BubbleSort}{$A$}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+For{$i
+\backslash
+gets 0, length(A)-1$}
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+For{$j
+\backslash
+gets 0, length(A)-i-1$}
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+If{$A[j] < A[j+1]$}
+\end_layout
+
+\begin_layout Plain Layout
+
+                
+\backslash
+State swap A[j] and A[j+1]
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndProcedure
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Procedure{BubbleSort}{$A,n$}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+For{$i
+\backslash
+gets 0, n-1$}
+\backslash
+Comment{$n$}
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+For{$j
+\backslash
+gets 0, n-i-1$}
+\backslash
+Comment{$
+\backslash
+frac{n(n-1)}{2}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+If{$A[j] < A[j+1]$}
+\backslash
+Comment{$
+\backslash
+frac{n(n-1)}{2}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+                
+\backslash
+State $temp
+\backslash
+gets A[j]$
+\backslash
+Comment{$
+\backslash
+frac{n(n-1)}{2}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+                
+\backslash
+State $A[j]
+\backslash
+gets A[j+1]$
+\backslash
+Comment{$
+\backslash
+frac{n(n-1)}{2}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+                
+\backslash
+State $A[j+1]
+\backslash
+gets temp$
+\backslash
+Comment{$
+\backslash
+frac{n(n-1)}{2}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndProcedure
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{aligned}total & =n+\frac{5n(n-1)}{2}\\
+ & =n+2.5n^{2}-2.5n\\
+ & =2.5n^{2}-1.5n\\
+ & =O(n^{2})
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+数学家把步骤数量写成代数式子。例如当数据有 
+\begin_inset Formula $n=1000$
+\end_inset
+
+ 笔，步骤数量一共是 
+\begin_inset Formula $2.5×1000^{2}-1.5×1000=2498500$
+\end_inset
+
+ 步。
+\end_layout
+
+\begin_layout Standard
+有了步骤数量之后，还可以进一步粗估执行时间。假设一个步骤需要 10 个 clock，而计算机中央处理器 CPU 的频率是 2GHz ：每秒钟执行
+ 2000000 个 clock，那么程序执行时间大约 12.4925 秒。
+\end_layout
+
+\begin_layout Standard
+但是这不是精准的步骤数量。由于实作的关系，系数很容易变动，所以系数的意义不大。因此数学家只取出代数式子的最高次方，并且规定 
+\begin_inset Formula $n$
+\end_inset
+
+ 必须足够大（类似微积分的极限概念）。尽管这是非常不精准的估算方式，不过还是可以对常见的算法进行简易分类，粗略地比较快慢。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+time*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+space
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bubble sort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+insertion sort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+merge sort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n\log(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+quicksort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+heapsort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n\log(n))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+counting sort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n+r)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(n+r)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+*worst case
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+空间的计算方式与时间类似，就不多提了。由于空间复杂度不会超过时间复杂度，而且空间复杂度通常不会呈指数成长，所以大家比较不在意空间复杂度。教科书上面通常比较强调时
+间复杂度。
+\end_layout
+
+\begin_layout Subsection
+解决问题的成效
+\end_layout
+
+\begin_layout Standard
+算法的好坏除了时间和空间的用量以外，主要还是看算法解决问题的成效如何。
+\end_layout
+
+\begin_layout Standard
+数学问题，通常可以明定解答好坏，例如数字越大越好。通常这种情况，有多种算法可以求得正解，那么这些算法的成效是一样好的。
+\end_layout
+
+\begin_layout Standard
+真实世界的问题，通常难以界定绝对的好坏优劣，例如美丑、乐音噪音、喜怒哀乐、是非对错等等，此时算法的成效，就由人自行判断，利用两两比较、投票表决等等方式来决定成效
+。 
+\end_layout
+
+\begin_layout Section
+Algorithm
+\end_layout
+
+\begin_layout Subsection
+学习程序语言
+\end_layout
+
+\begin_layout Standard
+学习程序语言，有两个层次：一、程序语言本身的语法；二、把想法转换成程序代码。
+\end_layout
+
+\begin_layout Standard
+第一个层次即是「程序语言 Programming Language 」。终极目标是背熟规格书、灵活运用程序语言。可参考本站文件「
+\begin_inset CommandInset href
+LatexCommand href
+name " C/C++"
+target "http://www.csie.ntnu.edu.tw/~u91029/C++.html"
+
+\end_inset
+
+」。
+\end_layout
+
+\begin_layout Standard
+第二个层次即是「程序设计 Programming 」。终极目标是设计程序代码解决问题。可参考本站文件「
+\begin_inset CommandInset href
+LatexCommand href
+name " Programming"
+target "http://www.csie.ntnu.edu.tw/~u91029/Programming.html"
+
+\end_inset
+
+ 」。 
+\end_layout
+
+\begin_layout Subsection
+学习算法
+\end_layout
+
+\begin_layout Standard
+学习算法，有两个层次：一、算法本身的运作过程；二、把想法转换成算法。
+\end_layout
+
+\begin_layout Standard
+第一个层次即是「算法 Algorithm 」。终极目标是灵活运用各个算法。可参考本站首页的各大字段，例如图论、计算几何、字符串学等等。
+\end_layout
+
+\begin_layout Standard
+第二个层次即是「算法设计 Algorithm Design 」。终极目标是设计数学计算解决问题。可参考本站首页的 Algorithm Design
+ 字段。 
+\end_layout
+
+\begin_layout Subsection
+算法设计、算法分析
+\end_layout
+
+\begin_layout Standard
+算法又可以细分为两个不同的方向。
+\end_layout
+
+\begin_layout Standard
+算法设计，是制造相对应的算法。算法设计目前已经有一些经典手法，例如 Dynamic Programming 、 Greedy 等等。读者可以参考《
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Algorithm Design"
+target "http://www.aw-bc.com/info/kleinberg/"
+
+\end_inset
+
+ 》这本书。
+\end_layout
+
+\begin_layout Standard
+算法分析，是针对特定算法，精确计量时间复杂度和空间复杂度。算法分析会用到很多数学知识。读者可以参考《 
+\begin_inset CommandInset href
+LatexCommand href
+name "An Introduction to the Analysis of Algorithms "
+target "http://aofa.cs.princeton.edu/home/"
+
+\end_inset
+
+》这本书。 
+\end_layout
+
+\begin_layout Section
+Algorithm Class
+\end_layout
+
+\begin_layout Subsection
+Offline Algorithm / Online Algorithm
+\end_layout
+
+\begin_layout Standard
+「离线算法」是一口气输入所有数据之后，才能开始运行的算法。例如 Bubble Sort 。
+\end_layout
+
+\begin_layout Standard
+「在线算法」是不需等待所有数据到达，就可以分时分段处理输入的算法。例如 Insertion Sort 。
+\end_layout
+
+\begin_layout Standard
+有些「在线算法」甚至可以实时提供目前所有输入的正确输出。例如 Insertion Sort 。
+\end_layout
+
+\begin_layout Subsection
+Static Algorithm / Dynamic Algorithm
+\end_layout
+
+\begin_layout Standard
+「静态算法」是无法随时修改、增加、减少原本的输入数据，无法随时查询输出的算法。例如 Dijkstra's Algorithm 。
+\end_layout
+
+\begin_layout Standard
+「动态算法」是可以随时修改、增加、减少原本的输入数据，可以随时查询输出的算法。例如 Binary Search Tree 。 
+\end_layout
+
+\begin_layout Subsection
+Exact Algorithm / Approximation Algorithm
+\end_layout
+
+\begin_layout Standard
+「精确算法」是计算结果绝对正确的算法。
+\end_layout
+
+\begin_layout Standard
+「近似算法」是计算结果拥有误差的算法。
+\end_layout
+
+\begin_layout Standard
+有许多问题无法快速计算正确答案。为了追求速度，就会设计「近似算法」。 
+\end_layout
+
+\begin_layout Section
+Time Complexity 
+\end_layout
+
+\begin_layout Subsection
+时间复杂度
+\end_layout
+
+\begin_layout Standard
+想要描述一个算法执行速度有多快，最直觉的方式是测量算法计算时间，另一种方式是统计算法步骤数目。由于执行时间深受机械规格与实作方式影响，难以放诸四海皆准，因此学术
+上倾向于统计算法步骤数目。一般都是统计加减乘除的次数。
+\end_layout
+
+\begin_layout Subsection
+时间复杂度标记法
+\end_layout
+
+\begin_layout Standard
+时间复杂度的标记法，是几十年前的数学家发明的一种方式：大写的英文字母 
+\begin_inset Formula $O$
+\end_inset
+
+ 函数代表算法执行步骤数目上限，大写的希腊字母 
+\begin_inset Formula $\varOmega$
+\end_inset
+
+ 函数代表下限，大写的希腊字母 
+\begin_inset Formula $\varTheta$
+\end_inset
+
+ 函数代表同时满足上限与下限（也就是不多不少刚刚好）。这些都是假设 
+\begin_inset Formula $N$
+\end_inset
+
+ 无限大的情况，又由于 
+\begin_inset Formula $N$
+\end_inset
+
+ 无限大，所以我们只需比较函数的最高次方项，另外我们省略了最高次方项的系数。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $N$
+\end_inset
+
+ 无限大。无限大对数学家来说是司空见惯，然而对程序设计师来说却是天方夜谭。什么时候程序设计师才会遇到无限大的测试数据呢？遇不到。真实世界中根本不可能把无限大的测
+试数据输入到程序之中。不管是什么坚忍不拔、屹立不摇的程序，总还是有那么一天，发生了停电、当机、人为更新设备，而把程序中止了，造成程序没时间吃进无限多的测试数据。
+真实世界也没有那么大的内存能够一口气读进无限多笔数据。 
+\begin_inset Formula $N$
+\end_inset
+
+ 无限大是不可能的，但是有可以模拟为 
+\begin_inset Formula $N$
+\end_inset
+
+ 无限大的情况。例如操作系统的程序，例如网络应用程序，持续执行个一年半载都不停，含辛茹苦不眠不休地处理数据。一有测试数据就赶快解决掉，当作好像没有发生过一样，乍
+看是无限多笔测试数据，实际上却是同一个步骤执行无限多次。这时候用时间复杂度的标记法，用来判断算法快慢，是一个不错的指标。然而还是要小心，当两个算法时间复杂度一样
+，两者的速度也可能相去甚远，因为最高次方项的系数根本就被忽略了。 一般在单机上跑没几秒钟就会结束的程序，只喂那少少的测试数据，要拿时间复杂度来评定算法快慢，那就
+有点扯了。 
+\begin_inset Formula $N=5$
+\end_inset
+
+ 的情况下，说不定 
+\begin_inset Formula $O(N^{3})$
+\end_inset
+
+ 的算法表现的比 
+\begin_inset Formula $O(N^{2})$
+\end_inset
+
+ 好。设计一个 
+\begin_inset Formula $O(N)$
+\end_inset
+
+ 的算法，在 
+\begin_inset Formula $N=5$
+\end_inset
+
+ 的情况下反而跑的比 
+\begin_inset Formula $O(N^{2})$
+\end_inset
+
+ 的算法还慢。两个同为 
+\begin_inset Formula $O(N)$
+\end_inset
+
+ 的算法可能不一样快，
+\begin_inset Formula $N$
+\end_inset
+
+ 大时甲快、 
+\begin_inset Formula $N$
+\end_inset
+
+ 小则乙快。 
+\end_layout
+
+\begin_layout Subsection
+测试数据
+\end_layout
+
+\begin_layout Standard
+当测试数据很乱，那我们可以说平均的时间复杂度多少；当测试资料很整齐，那我们可以说最佳与最坏的时间复杂度为多少。例如 Quicksort ，最佳
+ 
+\begin_inset Formula $O(N)$
+\end_inset
+
+ ，平均 
+\begin_inset Formula $O(N\log N)$
+\end_inset
+
+ ，最差 
+\begin_inset Formula $O(N^{2})$
+\end_inset
+
+ 。另外还想讲一件事：最佳、平均、最坏跟 omega 、 theta 、 O 没有关系，不知道为什么很多人觉得它们是对应的。 
+\end_layout
+
+\begin_layout Standard
+Smoothed Analysis 则是分析测试数据有多少机率是整齐的、多少机率是乱的。 
+\end_layout
+
+\begin_layout Subsection
+算法的步骤数目不是固定的
+\end_layout
+
+\begin_layout Standard
+Probabilistic Analysis 和 Amortized Analysis 和 Competitive Analysis 。
+\end_layout
+
+\begin_layout Subsection
+内存
+\end_layout
+
+\begin_layout Standard
+再者，时间复杂度的标记法，完全忽略了处理 I/O 和内存管理的问题。要是数据结构复杂一点、庞大一点，读取数据就会变得比较慢，就算是时间复杂度比较低的算法，也可能
+慢得吓死人。时间复杂度的标记法也没有考虑程序语言特性和平台特性。平平同一个算法，用 C 写的通常就比用 Java 的跑得快。
+\end_layout
+
+\begin_layout Standard
+时间复杂度标记法再怎么不可靠，也比不上实作的不可靠。平平同一个算法，不同人写出来的程序代码也可能执行效率不一样，差十倍都是有可能的。 
+\end_layout
+
+\begin_layout Subsection
+当今计算机计算能力的极限
+\end_layout
+
+\begin_layout Standard
+也许各位已经听闻过当今七大数学难题之一「 P=NP 问题」。目前的计算机运算能力其实差强人意，绝大多数的问题都没办法快速地求解。就算找来大量计算机实施并行计算，
+依然没办法快速地求解。
+\end_layout
+
+\begin_layout Standard
+然而，现代人类对于计算机有着神祇般的依赖，各种日常生活问题都祈望计算机能够帮上忙。于是近似算法出现了，用来求得一个马马虎虎差不多的答案。 
+\end_layout
+
+\begin_layout Subsection
+最佳排列、最佳组合
+\end_layout
+
+\begin_layout Standard
+「穷举所有排列」目前不存在多项式时间的算法。「穷举所有组合」目前有伪多项式时间的算法。
+\end_layout
+
+\begin_layout Section
+P versus NP
+\end_layout
+
+\begin_layout Subsection
+示意图
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/NP.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+P 问题
+\end_layout
+
+\begin_layout Standard
+用多项式时间算法能够计算答案的问题。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+「找出一群数字当中最大的数字」是P问题。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+P 的全名是 Polynomial time 。通常以「 P 」表示所有 P 问题构成的集合。 
+\end_layout
+
+\begin_layout Subsection
+NP 问题
+\end_layout
+
+\begin_layout Standard
+用指数时间算法能够计算答案的问题，同时，用多项式时间算法能够验证答案的问题。
+\end_layout
+
+\begin_layout Standard
+由于 P 问题也可以改用指数时间算法计算答案、当然可以用多项式时间验证答案，故 P 问题都属于 NP 问题。 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+「找出一张图的一条Hamilton Path」是NP问题。
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+计算答案： 
+\end_layout
+
+\begin_layout Plain Layout
+穷举所有可能的路线，一条一条验证。 
+\end_layout
+
+\begin_layout Plain Layout
+是指数时间算法。
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+验证答案：
+\end_layout
+
+\begin_layout Plain Layout
+给定一条可能的路线，就照着路线走，看看能不能走到每一点。 
+\end_layout
+
+\begin_layout Plain Layout
+是多项式时间算法。 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+「找出一张图成本最小的那条Hamilton Path」不是NP问题。
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+计算答案： 
+\end_layout
+
+\begin_layout Plain Layout
+穷举所有可能的路线，一条一条验证。 
+\end_layout
+
+\begin_layout Plain Layout
+是指数时间算法。
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+验证答案： 
+\end_layout
+
+\begin_layout Plain Layout
+就算给定一条可能的路线， 
+\end_layout
+
+\begin_layout Plain Layout
+还是必须穷举所有路线，一条一条验证，才知道哪条路线成本最少。 
+\end_layout
+
+\begin_layout Plain Layout
+是指数时间算法。 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+值得一提的是，每一个 NP 问题，都可以设计出多项式时间算法，转换成另一个 NP 问题。换句话说，所有 NP 问题都可以用多项式时间算法彼此转换。
+ 
+\end_layout
+
+\begin_layout Standard
+NP 的全名是 Non-deterministic Polynomial time ，定义颇复杂，此处省略之。通常以「 NP 」表示所有 NP
+ 问题构成的集合。 
+\end_layout
+
+\begin_layout Subsection
+NP-complete 问题
+\end_layout
+
+\begin_layout Standard
+所有 NP 问题当中，最具代表性、层次最高、最难的问题。
+\end_layout
+
+\begin_layout Standard
+NP-complete 问题的各种特例，涵盖了所有 NP 问题。只要有办法解决 NP-complete 问题，就有办法解决 NP 问题。
+\end_layout
+
+\begin_layout Standard
+各个 NP-complete 问题都等价、都一样难，可以用多项式时间算法彼此转换。现今已经找出上百个 NP-complete 问题了。
+\end_layout
+
+\begin_layout Standard
+Complete 的意义为：能够代表整个集合的子集合。举例来说，它就像是一个线性空间（ linear space ）的基底（ basis ）。
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+「判断一张图是否存在Hamilton Path」已被证明是NP-complete问题。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+NP-hard 问题
+\end_layout
+
+\begin_layout Standard
+用多项式时间算法转换 NP 问题所得到的问题，同时，必须是跟 NP-complete 问题一样难、还要难的问题。 
+\end_layout
+
+\begin_layout Standard
+NP-hard 问题可能是：甲、 NP-complete 问题（是 NP 问题），乙、超出 NP 问题的复杂度，是更难的问题。 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+「找出一张图成本最小的Hamilton Path」是NP-hard问题。
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+由「找出一张图的一条Hamilton Path」这个NP问题，
+\end_layout
+
+\begin_layout Plain Layout
+用多项式时间把每条边加上成本而得。
+\end_layout
+
+\begin_layout Plain Layout
+而且「找出一张图成本最小的Hamilton Path」至少比NP-complete问题还难。 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+P = NP ?
+\end_layout
+
+\begin_layout Standard
+这是信息科学界的一个悬案。大意是说：到底 NP 问题能不能用多项式时间算法解决呢？如果可以的话，那么 NP 问题就都变成了 P 问题了。这意味着有一些花上几十年
+几百年算不出答案的问题，变得可以在几分几秒内计算完毕、得到答案。
+\end_layout
+
+\begin_layout Standard
+有一个解决这个悬案的方向是：尝试发明一个多项式时间算法，解决某一个 NP-complete 问题。一旦找到了一个多项式时间算法能够算出某一个 NP-comple
+te 问题的答案，我们可以将此 NP-complete 问题进行特例化得到所有 NP 问题，如此一来，所有 NP 问题就一定可以用多项式时间算法算出答案了。
+ 
+\end_layout
+
+\begin_layout Standard
+很多人声称自己已经成功证明了，但是至今还没有一个让所有人都信服的证明： 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.win.tue.nl/~gwoegi/P-versus-NP.htm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+介于 P 与 NP-complete 之间的问题
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "http://cstheory.stackexchange.com/questions/79/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Algorithm Design
+\end_layout
+
+\begin_layout Section
+Incremental Method
+\end_layout
+
+\begin_layout Standard
+\align right
+
+\shape italic
+不积跬步，无以至千里。不积小流，无以成江海。《荀子》
+\end_layout
+
+\begin_layout Subsection
+Incremental Method
+\end_layout
+
+\begin_layout Standard
+「递增法」是符合计算机运作特性的方法。计算机执行程序，一次只做一个动作，完成了一件事才做下一件事。当一个问题太大太多时，化整为零、一个一个解决吧！
+ 
+\end_layout
+
+\begin_layout Standard
+合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。谨以此句与大家共勉。
+\end_layout
+
+\begin_layout Subsection
+范例：加总数字
+\end_layout
+
+\begin_layout Standard
+无论计算机再怎么强，还是得一个一个累加数字。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void summation()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[5] = {3, 6, 9, -8, 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+    int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        sum += array[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "总和是" << sum;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int summation(int array[], int n)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<n; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        sum += array[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+    return sum;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：复制字符串
+\end_layout
+
+\begin_layout Standard
+无论计算机再怎么强，还是得逐字复制。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void copy()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    char s[15] = "incremental";
+\end_layout
+
+\begin_layout Plain Layout
+
+    char t[15];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    int i;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (i=0; s[i] != '
+\backslash
+0'; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+        t[i] = s[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+    t[i] = '
+\backslash
+0';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "原本字符串" << s;
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "复制之后的字符串" << t;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void copy(char* s, char* t)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int i;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (i=0; s[i]; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+        t[i] = s[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+    t[i] = '
+\backslash
+0';
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：选择排序法（ Selection Sort ）
+\end_layout
+
+\begin_layout Standard
+找到第一小的数字，放在第一个位置；再找到第二小的数字，放在第二个位置。一次找一个数字，如此下去就会把所有数值按照顺序排好了。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental3.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void selection_sort() {
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[5] = {3, 6, 9, -8, 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        // 从尚未排序的数字当中，找到第i小的数值。
+\end_layout
+
+\begin_layout Plain Layout
+
+        int min_index = i;
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=i+1; j<5; ++j)
+\end_layout
+
+\begin_layout Plain Layout
+
+            if (array[j] < array[min_index]) 
+\end_layout
+
+\begin_layout Plain Layout
+
+                min_index = j;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        // 把第i小的数值，放在第i个位置。
+\end_layout
+
+\begin_layout Plain Layout
+
+        swap(array[i], array[min_index]);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 印出排序结果。
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << array[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：印出直角三角形
+\end_layout
+
+\begin_layout Standard
+多字成行，多行成直角三角形。由细微的东西开始，一件一件组起来。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental4.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+// 多字成行
+\end_layout
+
+\begin_layout Plain Layout
+
+void print_line(int n)  // n 是一行的长度
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=1; i<=n; i++) cout << '@';
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << '
+\backslash
+n';
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// 多行成直角三角形
+\end_layout
+
+\begin_layout Plain Layout
+
+void print_triangle(int n)  // n 是行数
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=n; i>=1; i--) print_line(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "488"
+target "http://uva.onlinejudge.org/external/4/488.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10038"
+target "http://uva.onlinejudge.org/external/100/10038.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10107"
+target "http://uva.onlinejudge.org/external/101/10107.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10370"
+target "http://uva.onlinejudge.org/external/103/10370.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：人潮最多的时段（ Interval Partitioning Problem ）
+\end_layout
+
+\begin_layout Standard
+一群访客参加宴会，我们询问到每一位访客的进场时刻与出场时刻，请问宴会现场挤进最多人的时段。
+\end_layout
+
+\begin_layout Standard
+换个角度想，想象会场门口装着一支监视器。有访客进入，会场就多一人；有访客离开，会场就少一人。如此就很容易统计会场人数。递增的标的是时刻，而不是访客。
+ 
+\end_layout
+
+\begin_layout Standard
+【注：这个技巧在中文网络上昵称为「离散化」。】 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental5.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+struct Guest {int arrival, leave;} g[10];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+bool cmp(const int& i, const int& j)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    return abs(i) < abs(j);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void maximum_guest()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    vector<int> time;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<10; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        time.push_back(+g[i].arrival);
+\end_layout
+
+\begin_layout Plain Layout
+
+        time.push_back(-g[i].leave);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    sort(time.begin(), time.end(), cmp);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n = 0, maximum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<time.size(); ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (time[i] >= 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+            n++;
+\end_layout
+
+\begin_layout Plain Layout
+
+        else
+\end_layout
+
+\begin_layout Plain Layout
+
+            n--;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        maximum = max(maximum, n);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "人潮最多的时段有" << maximum << "人";
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+此处仅找出人数。找出人潮最多的时段，就留给各位自行尝试吧。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "688"
+target "http://uva.onlinejudge.org/external/6/688.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "972"
+target "http://uva.onlinejudge.org/external/9/972.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10613"
+target "http://uva.onlinejudge.org/external/106/10613.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10585"
+target "http://uva.onlinejudge.org/external/105/10585.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10963"
+target "http://uva.onlinejudge.org/external/109/10963.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "308"
+target "http://uva.onlinejudge.org/external/3/308.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "837"
+target "http://uva.onlinejudge.org/external/8/837.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：储存坐标
+\end_layout
+
+\begin_layout Standard
+递增的标的，主为点，次为坐标轴。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+struct Point {float x, y;} p[5] = 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    {0, 1}, {1, 2}, {3, 0}, {2, 2}, {3, 1}
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}; 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+递增的标的，主为坐标轴，次为点。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental7.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+float x[5] = {0, 1, 3, 2, 3};
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+float y[5] = {1, 2, 0, 2, 1};
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：印出转换成小写的字符串
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental8.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+有需要改变的，只有大写字母──如果是大写字母，就转换成小写字母并且印出；如果不是大写字母，就直接印出。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+void print_lowercase()
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    char s[15] = "Hello World!";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    char t[15];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    // 第一波：复制字符串
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    for (int i=0; s[i]; i++)
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+        t[i] = s[i];
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    // 第二波：换成小写
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    for (int i=0; s[i]; i++)
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+        if (t[i] >= 'A' && t[i] <= 'Z')
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+            t[i] = t[i] - 'A' + 'a';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    // 第三波：印出字符串
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    cout << t;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+void print_lowercase()
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    char s[15] = "Hello World!";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    char t[15];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    // 每一波的程序代码可以自行包装成为函数，
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    // 亦可套用内建函数库。
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    my_copy(s, t);      // 复制字符串
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    my_lowercase(t);    // 换成小写
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    cout << t;          // 印出字符串
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+第一种解法称作 one-pass ，数据只会读取一遍。读取数据的同时，也一口气处理掉所有事情。
+\end_layout
+
+\begin_layout Standard
+第二种解法称作 multi-pass ，数据会重复读取许多遍。所有事情划分成数个阶段，逐步处理，每个阶段只专心处理一件事情。
+\end_layout
+
+\begin_layout Standard
+one-pass 的优点是：程序代码简短、执行时间也短。缺点是：程序代码不易编修。
+\end_layout
+
+\begin_layout Standard
+multi-pass 的优点是：程序代码一目了然，容易编修、测试、除错；程序代码可以包装成为函数，也有机会套用内建函数库。缺点是：需要额外的暂存内存。
+\end_layout
+
+\begin_layout Standard
+这两种方式各有利弊。程序员必须自行取舍。 
+\end_layout
+
+\begin_layout Subsection
+范例：对调数字
+\end_layout
+
+\begin_layout Standard
+利用一个变量，暂存其中一个数字，以便对调。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental9.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+void swap_int()
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    int a = 0, b = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    // 交换a与b
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    int temp = a;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    a = b;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    b = temp;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    cout << a << ' ' << b;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+void swap_int(int& a, int& b)
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    int temp = a;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    a = b;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    b = temp;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：对调数组
+\end_layout
+
+\begin_layout Standard
+节省内存的方法：采用递增法，逐一对调数字。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental10.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+void swap_int_array()
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    int a[5] = {3, 6, 9, -8, 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+    int b[5] = {9, 8, 7, 6, 5};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    // one-pass
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+        int temp = a[i];
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+        a[i] = b[i];
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+        b[i] = temp;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+浪费内存的方法：建立一个数组，暂存其中一个数组。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Incremental11.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+void swap_int_array()
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    int a[5] = {3, 6, 9, -8, 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+    int b[5] = {9, 8, 7, 6, 5};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    // multi-pass
+\end_layout
+
+\begin_layout Plain Layout
+
+    int temp[5];
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    for (int i=0; i<5; ++i) temp[i] = a[i];
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    for (int i=0; i<5; ++i) a[i] = b[i];
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    for (int i=0; i<5; ++i) b[i] = temp[i];
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+void swap_int_array()
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    int a[5] = {3, 6, 9, -8, 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+    int b[5] = {9, 8, 7, 6, 5};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    // multi-pass
+\end_layout
+
+\begin_layout Plain Layout
+
+    int temp[5];
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    my_copy(a, temp);
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    my_copy(b, a);
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    my_copy(temp, b);
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Memoization
+\end_layout
+
+\begin_layout Standard
+\align right
+
+\shape italic
+惟事事，乃其有备，有备无患。《书经》
+\end_layout
+
+\begin_layout Subsection
+Memoization
+\end_layout
+
+\begin_layout Standard
+「记忆法」是符合计算机运作特性的方法。计算机拥有大量储存空间。只要将计算过的数值，储存于内存，往后就能直接使用内存储存的数据，不必再浪费时间重复计算一遍。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Memoization（Tabulation）
+\end_layout
+
+\begin_layout Plain Layout
+算法执行过程之中，实时更新数值，储存于内存。 
+\end_layout
+
+\begin_layout Plain Layout
+例如堆栈的大小。
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Preprocessing（Precalculation）
+\end_layout
+
+\begin_layout Plain Layout
+算法开始之时，预先计算数值，储存于内存。
+\end_layout
+
+\begin_layout Plain Layout
+例如圆周率、字符串的长度、质数的表格。 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+如果要储存大量的、同性质的数值，我们可以将这些数值整理成一个表格（通常是数组），以方便查阅──称作「查询表 lookup table 」。例如质数表便是一个「查
+询表」。
+\end_layout
+
+\begin_layout Subsection
+范例：数组大小
+\end_layout
+
+\begin_layout Standard
+使用一个变量，纪录数据数量，以便迅速地增加数据。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Memorization1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+void array_size()
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    int array[100];
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    int n = 0;      // 使用一个变量，纪录数据数量。
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    array[n++] = 3; // 以便迅速地增加数据。
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    array[n++] = 6;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    array[n++] = 9;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    cout << n;
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+C++ 程序语言的标准函数库的 stack ，事实上也额外隐含了一个变量，纪录数据数量。当堆栈塞入数据、弹出数据的时候，也就是调用 push 函数、调用
+ pop 函数的时候，就默默更新数据数量。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+void stack_size()
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    stack<int> s;       // C++ STL <stack>
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    s.push(1);          // 默默地n++
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    s.pop();            // 默默地--n
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+    cout << s.size();   // 把n印出来
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：加总数字
+\end_layout
+
+\begin_layout Standard
+利用一个变量，累计数字的总和。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Memorization2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void summation()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[5] = {3, 6, 9, -8, 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+    int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        sum += array[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "总和是" << sum;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int summation(int array[], int n)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<n; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        sum += array[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+    return sum;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：统计字母数量
+\end_layout
+
+\begin_layout Standard
+建立 26 格的数组，让字母 a 到 z 依序对应数组的每一格，作为 lookup table 。一边读取字符串，一边累计字母出现次数。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Memorization3.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void count_letter()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    char s[15] = "Hello World!";
+\end_layout
+
+\begin_layout Plain Layout
+
+    int c[26] = {0};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 字母一律换成小写
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; s[i]; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (s[i] >= 'A' && s[i] <= 'Z')
+\end_layout
+
+\begin_layout Plain Layout
+
+            s[i] = s[i] - 'A' + 'a';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 统计字母数量
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; s[i]; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (s[i] >= 'a' && s[i] <= 'z')
+\end_layout
+
+\begin_layout Plain Layout
+
+            c[s[i] - 'a']++;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 印出统计结果
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<26; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << char('a'+i) << ':' << c[i] << '
+\backslash
+n';
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "10260"
+target "http://uva.onlinejudge.org/external/102/10260.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10082"
+target "http://uva.onlinejudge.org/external/100/10082.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10222"
+target "http://uva.onlinejudge.org/external/102/10222.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "12626"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：统计数字数量
+\end_layout
+
+\begin_layout Standard
+当数字范围太大，无法建立那么大的数组，可以改用 hash table 、 binary search tree 等等数据结构作为 lookup
+ table 。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Memorization4.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void count_number()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[10] =
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        1, 3, 4, 10, 11,
+\end_layout
+
+\begin_layout Plain Layout
+
+        1000000000, 23, 99, 123, 514
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+//  int c[1000000000] = {0};
+\end_layout
+
+\begin_layout Plain Layout
+
+    map<int, int> c;   // binary search tree
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 统计数字数量
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<10; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        c[array[i]]++;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 印出统计结果
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (auto i=c.begin(); i!=c.end(); ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << i->first << ':' << i->second << '
+\backslash
+n';
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "11572"
+target "http://uva.onlinejudge.org/external/115/11572.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "141"
+target "http://uva.onlinejudge.org/external/1/141.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：求 1 到 n 的全部整数的立方和， n 的范围由 1 到 10 。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Memorization5.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+以直接的方式，累加每个立方数。（尽管这个问题有公式解，但是为了方便举例，所以这里不采用公式解。）
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int sum_of_cubes(int n)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=1; i<=n; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        sum += i * i * i;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return sum;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void print_sum_of_cubes()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n;
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (cin >> n && n > 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << sum_of_cubes(n);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+使用 Memoization 。建立 11 格的数组，每一格依序对应 0 到 10 的立方数，作为 lookup table 。一旦计算完毕，就储存至表格；往后
+就直接读取表格，不需重复计算。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int sum_of_cubes(int n)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 其值为 0 表示没有存入答案
+\end_layout
+
+\begin_layout Plain Layout
+
+    static int answer[10 + 1] = {};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 如果已经计算过，就直接读取表格的答案。
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (answer[n] != 0) return answer[n];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 如果不曾计算过，就计算一遍，储存答案。
+\end_layout
+
+\begin_layout Plain Layout
+
+    int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=1; i<=n; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        sum += i * i * i;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return answer[n] = sum;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void print_sum_of_cubes()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n;
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (cin >> n && n > 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << sum_of_cubes(n);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+使用 Preprocessing 。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void print_sum_of_cubes()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 预先建立立方数表格
+\end_layout
+
+\begin_layout Plain Layout
+
+    int cube[10 + 1];
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=1; i<=10; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+        cube[i] = i * i * i;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n;
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (cin >> n && n > 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        // 直接读取表格的立方数
+\end_layout
+
+\begin_layout Plain Layout
+
+        int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int i=1; i<=n; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+            sum += cube[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << sum;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Preprocessing 当然也可以直接算答案啦。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int sum_of_cubes(int n)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=1; i<=n; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        sum += i * i * i;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return sum;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void print_sum_of_cubes()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 预先计算所有答案
+\end_layout
+
+\begin_layout Plain Layout
+
+    int answer[10 + 1];
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=1; i<=10; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+        answer[i] = sum_of_cubes(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 直接读取表格的答案
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n;
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (cin >> n && n > 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << answer[n];
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+最后是 Preprocessing 的极致。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void print_sum_of_cubes()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 预先计算答案，写死在程序代码里面。
+\end_layout
+
+\begin_layout Plain Layout
+
+    int answer[10 + 1] =
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        0, 1, 9, 36, 100, 225,
+\end_layout
+
+\begin_layout Plain Layout
+
+        441, 784, 1296, 2025, 3025
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 直接读取表格的答案
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n;
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (cin >> n && n > 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << answer[n];
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "10738"
+target "http://uva.onlinejudge.org/external/107/10738.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10894"
+target "http://uva.onlinejudge.org/external/108/10894.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：印出方框
+\end_layout
+
+\begin_layout Standard
+建立二维数组：数组的格子，依序对应窗口的文字。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Memorization6.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+不直接印出方框，而是间接填至数组。不必数空格键，只需两条水平线和两条垂直线。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void print_square_border()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 建立内存
+\end_layout
+
+\begin_layout Plain Layout
+
+    char array[5][5];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 预先填入空格键
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=0; j<5; ++j)
+\end_layout
+
+\begin_layout Plain Layout
+
+            array[i][j] = ' ';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 填入方框：两条水平线、两条垂直线
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 即便相互重叠也无所谓
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; ++i) array[0][i] = '@';
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; ++i) array[4][i] = '@';
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; ++i) array[i][0] = '@';
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; ++i) array[i][4] = '@';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 印出方框
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; ++i)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=0; j<5; ++j)
+\end_layout
+
+\begin_layout Plain Layout
+
+            cout << array[i][j];
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << '
+\backslash
+n';
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "105"
+target "http://uva.onlinejudge.org/external/1/105.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "706"
+target "http://uva.onlinejudge.org/external/7/706.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：拆开循环（ Loop Unrolling ）
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Memorization7.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+循环语法的功能是：一段指令，重复实施数次，但是每次都稍微变动一点点。
+\end_layout
+
+\begin_layout Standard
+事实上，我们可以反璞归真，拆开循环，还原成数行指令。如此一来，就节省了循环每次累加变量的时间，也节省了循环每次判断结束条件的时间。
+\end_layout
+
+\begin_layout Standard
+拆开循环是一种 Preprocessing ，预先计算循环变量、预先计算循环结束条件。
+\end_layout
+
+\begin_layout Standard
+拆开循环之后，虽然提高了程序的执行速度，但是降低了程序可读性。程序员必须自行取舍。 
+\end_layout
+
+\begin_layout Section
+Enumeration
+\end_layout
+
+\begin_layout Standard
+\align right
+
+\shape italic
+愚者千虑，必有一得。《史记》
+\end_layout
+
+\begin_layout Subsection
+Enumeration
+\end_layout
+
+\begin_layout Standard
+「枚举法」利用了计算机无与伦比的计算速度。找到不确定的变量，枚举所有可能性，逐一判断正确性。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\begin_layout Plain Layout
+一笔一笔列出所有数据。
+\end_layout
+
+\begin_layout Plain Layout
+对应到程序语言的for。
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Search
+\end_layout
+
+\begin_layout Plain Layout
+浏览所有数据，找出需要的部份。
+\end_layout
+
+\begin_layout Plain Layout
+对应到程序语言的for加if。 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+收集充分信息，就能解决问题。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：枚举一百个平方数
+\end_layout
+
+\begin_layout Standard
+采用直接法：依序枚举数字 1 到 100 ；枚举过程当中，将数字平方得到平方数。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void generate_squares()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=1; i<=100; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << i*i << "是平方数";
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+采用试误法：依序枚举数字 1 到 
+\begin_inset Formula $\infty$
+\end_inset
+
+ ；枚举过程当中，判断数字是不是平方数。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration3.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void generate_squares()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=1; i<=100*100; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        int sqrt_i = sqrt(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (sqrt_i * sqrt_i == i)
+\end_layout
+
+\begin_layout Plain Layout
+
+            cout << i << "是平方数";
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：寻找数组里的最小值
+\end_layout
+
+\begin_layout Standard
+由小到大枚举数组索引值，逐一比较数组元素。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration4.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void find_minimum()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[5] = {3, 6, 9, -8, 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    int min = 2147483647;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; i++) // 枚举索引值
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (array[i] < min) // 比较元素
+\end_layout
+
+\begin_layout Plain Layout
+
+            min = array[i]; // 随时纪录最小值
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "最小的数字是" << min;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int find_minimum(int array[], int n)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int min = 2147483647;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<n; i++) // 枚举索引值
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (array[i] < min) // 比较元素
+\end_layout
+
+\begin_layout Plain Layout
+
+            min = array[i]; // 随时纪录最小值
+\end_layout
+
+\begin_layout Plain Layout
+
+    return min;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：寻找数组里的特定数字
+\end_layout
+
+\begin_layout Standard
+找到所有特定数字：浏览一遍所有数字。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration5.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void find_all_number()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[5] = {3, 6, 9, -8, 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; i++) // 枚举
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (array[i] == 6)  // 搜寻
+\end_layout
+
+\begin_layout Plain Layout
+
+            cout << i << ':' << array[i] << '
+\backslash
+n';
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+找到其中一个特定数字：一旦找到，立即停止浏览，以节省时间。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration6.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+bool find_number()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[5] = {3, 6, 9, -8, 1};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<5; i++) // 枚举
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (array[i] == 6)  // 搜寻
+\end_layout
+
+\begin_layout Plain Layout
+
+        {
+\end_layout
+
+\begin_layout Plain Layout
+
+            cout << i << ':' << array[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+            return true;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+    return false;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int find_number(int array[i], int n, int num)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<n; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (array[i] == num)
+\end_layout
+
+\begin_layout Plain Layout
+
+            return i;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：寻找二维数组里的特定数字
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration7.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+多个元素成为一个横条、多个横条成为一个数组。内层先枚举元素，外层再枚举横条，就能枚举所有元素。
+\end_layout
+
+\begin_layout Standard
+方才是由内而外、由小到大进行思考，其实也可以由外而内、由大到小进行思考：外层先枚举每一个横条，内层再枚举一个横条的每一个元素，就能枚举所有元素。
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+bool find(int n)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[3][5] =
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        {3, 6, 9, -8, 1},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {2, 4, 6, 8, 10},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {11, 7, 5, 3, 2}
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 外层枚举每一个横条
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<3; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        // 内层枚举一个横条的每一个元素
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=0; j<5; j++)
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 就能枚举所有元素
+\end_layout
+
+\begin_layout Plain Layout
+
+            if (array[i][j] == n)
+\end_layout
+
+\begin_layout Plain Layout
+
+                return true;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return false;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+此处再介绍一种特别的思考方式：第一层枚举每一个横条，第二层枚举每一个直条，就能枚举所有直条与横条的交错之处。
+\end_layout
+
+\begin_layout Standard
+虽然前后两个思考方式完全不同，但是前后两支程序代码却完全相同。 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+bool find(int n)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[3][5] =
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        {3, 6, 9, -8, 1},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {2, 4, 6, 8, 10},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {11, 7, 5, 3, 2}
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 第一层枚举每一个横条
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<3; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        // 第二层枚举每一个直条
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=0; j<5; j++)
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 就能枚举所有横条与直条交错之处
+\end_layout
+
+\begin_layout Plain Layout
+
+            if (array[i][j] == n)
+\end_layout
+
+\begin_layout Plain Layout
+
+                return true;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return false;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：平面上距离最近的两个点（ Closest Pair Problem ）
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration8.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+第一层枚举第一个点，第二层枚举第二个点。为了避免重复枚举相同的一对点，第二层只枚举索引值更高的点。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void closest_pair()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    float point[10][2] =
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        {3, 3}, {1, 5}, {4, 6}, {2, 8}, {9, 9},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {2, 1}, {7, 2}, {6, 5}, {9, 4}, {5, 9}
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 距离最近的两个点的距离
+\end_layout
+
+\begin_layout Plain Layout
+
+    float d = 1e9;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 枚举第一点
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<10; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        // 枚举第二点
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=i+1; j<10; j++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        {
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 计算第一点到第二点的距离
+\end_layout
+
+\begin_layout Plain Layout
+
+            float dx = point[i][0] - point[j][0];
+\end_layout
+
+\begin_layout Plain Layout
+
+            float dy = point[i][1] - point[j][1];
+\end_layout
+
+\begin_layout Plain Layout
+
+            float dij = sqrt(dx * dx + dy * dy);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 纪录最短的距离
+\end_layout
+
+\begin_layout Plain Layout
+
+            if (dij < d) d = dij;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "距离是" << d;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+可以把计算距离的程序代码，抽离出来成为一个函数。好处是程序代码变得清爽许多，增加程序代码可读性。坏处是大量调用函数，导致执行速度变慢。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+struct Point {float x, y;};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// 计算两点之间的距离
+\end_layout
+
+\begin_layout Plain Layout
+
+float dist(Point& a, Point& b)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    float dx = a.x - b.x;
+\end_layout
+
+\begin_layout Plain Layout
+
+    float dy = a.y - b.y;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return sqrt(dx * dx + dy * dy);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void closest_pair()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    Point point[10] =
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        {3, 3}, {1, 5}, {4, 6}, {2, 8}, {9, 9},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {2, 1}, {7, 2}, {6, 5}, {9, 4}, {5, 9}
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    float d = 1e9;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<10; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=i+1; j<10; j++)
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 纪录最短的距离
+\end_layout
+
+\begin_layout Plain Layout
+
+            d = min(d, dist(point[i], point[j]));
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "距离是" << d;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+鱼与熊掌不可兼得，这两种程序代码各有优缺点，没有绝对的好坏。程序员必须自行取舍。
+\end_layout
+
+\begin_layout Subsection
+范例：字符串匹配（ String Matching ）
+\end_layout
+
+\begin_layout Standard
+从长字符串之中，找到短字符串的出现位置。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration9.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+第一层先枚举所有可以匹配的位置，第二层再枚举所有需要匹配的字符。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void string_matching()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    char text[15] = "It's a pencil.";
+\end_layout
+
+\begin_layout Plain Layout
+
+    char pattern[6] = "a pen";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 枚举所有可以匹配的位置
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<14; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        // 枚举所有需要匹配的字符
+\end_layout
+
+\begin_layout Plain Layout
+
+        bool match = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=0; j<5; j++)
+\end_layout
+
+\begin_layout Plain Layout
+
+            if (text[i+j] != pattern[j])
+\end_layout
+
+\begin_layout Plain Layout
+
+                match = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (match)
+\end_layout
+
+\begin_layout Plain Layout
+
+            cout << "短字符串出现在第" << i << "个字符";
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+因为短字符串不会超出长字符串末段，所以第一层枚举范围可以再略微缩小。
+\end_layout
+
+\begin_layout Standard
+因为只要一个相异字符，就足以表明匹配位置错误，所以第二层的枚举过程可以提早结束。 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void string_matching()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    char text[15] = "It's a pencil.";
+\end_layout
+
+\begin_layout Plain Layout
+
+    char pattern[6] = "a pen";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 仔细估量枚举范围
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<14-6+1; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        bool match = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=0; j<5; j++)
+\end_layout
+
+\begin_layout Plain Layout
+
+            if (text[i+j] != pattern[j])
+\end_layout
+
+\begin_layout Plain Layout
+
+            {
+\end_layout
+
+\begin_layout Plain Layout
+
+                match = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+                break;
+\end_layout
+
+\begin_layout Plain Layout
+
+            }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (match)
+\end_layout
+
+\begin_layout Plain Layout
+
+            cout << "短字符串出现在第" << i << "个字符";
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：统计字母数量
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration10.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+第一层先枚举 26 种英文字母，第二层再枚举字符串的所有字符，计算一种字母的数量。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void count_letter()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    char s[15] = "Hello World!";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 字母统一换成小写
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; s[i]; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (s[i] >= 'A' && s[i] <= 'Z')
+\end_layout
+
+\begin_layout Plain Layout
+
+            s[i] = s[i] - 'A' + 'a';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 枚举26种英文字母
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<26; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        // 枚举字符串的所有字符
+\end_layout
+
+\begin_layout Plain Layout
+
+        int c = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=0; s[j]; j++)
+\end_layout
+
+\begin_layout Plain Layout
+
+            if (s[j] == i)
+\end_layout
+
+\begin_layout Plain Layout
+
+                c++;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        // 印出一种字母的数量
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << (char)i << ':' << c;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+先前曾经介绍过统计字母数量的范例。先前范例当中，虽然耗费内存空间，但是执行速度快──简单来说就是空间大、时间小。此处范例当中，则是空间小，时间大，恰恰相反。这两
+种方式各有优缺点，程序员必须自行取舍。
+\end_layout
+
+\begin_layout Subsection
+范例：反转字符串
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration11.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+两个枚举，一个从头到尾，一个从尾到头，步调相同，逐步对调字符。虽然是两个枚举，却只有一个循环。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void reverse_string()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    char s[15] = "Hello World!";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 两个枚举，一个从头到尾，一个从尾到头。
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0, j=12; i<j; i++, j--)
+\end_layout
+
+\begin_layout Plain Layout
+
+        swap(s[i], s[j]);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "反转之后的字符串是" << s;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void reverse(char* s)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n = strlen(s);
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<n/2; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        swap(s[i], s[n-1-i]);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：寻找总和为 10 的区间
+\end_layout
+
+\begin_layout Standard
+假设数组元素只有正数。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration12.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+两个枚举，枚举区间左端以及枚举区间右端，都是从头到尾，保持一左一右，视情况轮流枚举。虽然是两个枚举，却只有一个循环。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void find_interval()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[5] = {3, 6, 1, 7, 2};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0, j=-1; j<5; )  // 枚举区间[i, j]
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (sum > 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+        {
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 总和太大，区间左端往右缩短。
+\end_layout
+
+\begin_layout Plain Layout
+
+            sum -= array[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+            i++;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+        else if (sum < 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+        {
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 总和太小，区间右端往右伸长。
+\end_layout
+
+\begin_layout Plain Layout
+
+            j++;
+\end_layout
+
+\begin_layout Plain Layout
+
+            sum += array[j];
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+        else if (sum == 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+        {
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 总和刚好，
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 区间左端往右缩短，
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 亦得区间右端往右伸长。
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 任选一种皆可。
+\end_layout
+
+\begin_layout Plain Layout
+
+//          sum -= array[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+//          i++;
+\end_layout
+
+\begin_layout Plain Layout
+
+            j++;
+\end_layout
+
+\begin_layout Plain Layout
+
+            sum += array[j];
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+         if (sum == 100)
+\end_layout
+
+\begin_layout Plain Layout
+
+            cout << '[' << i << ',' << j << ']';
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "75col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void find_interval(int array[], int n, int num)
+\end_layout
+
+\begin_layout Plain Layout
+
+{     int sum = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0, j=0; j<=n; )  // 枚举区间[i, j)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (sum > num)
+\end_layout
+
+\begin_layout Plain Layout
+
+            sum -= array[i++];
+\end_layout
+
+\begin_layout Plain Layout
+
+        else
+\end_layout
+
+\begin_layout Plain Layout
+
+            sum += array[j++];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (sum == num)
+\end_layout
+
+\begin_layout Plain Layout
+
+            cout << '[' << i << ',' << j-1 << ']';
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+读者可以想想看：数组元素若有零、有负数，是否要调整枚举方式？
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "972"
+target "http://uva.onlinejudge.org/external/9/972.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10464"
+target "http://uva.onlinejudge.org/external/104/10464.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "11536"
+target "http://uva.onlinejudge.org/external/115/11536.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "11572"
+target "http://uva.onlinejudge.org/external/115/11572.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：寻找数组之中的最小值，数组已经由小到大排序
+\end_layout
+
+\begin_layout Standard
+找到其中一个最小值：经常整理房间，寻找东西就快；预先排序数据，搜寻速度就快。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration13.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void find_minimum()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[5] = {3, 3, 6, 6, 9};
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "最小的数字是" << array[0];
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+找到所有最小值：读者请自行尝试。
+\end_layout
+
+\begin_layout Subsection
+范例：寻找数组之中的特定数字，数组已经由小到大排序
+\end_layout
+
+\begin_layout Standard
+找到其中一个特定数字：首先找到数组中央的数字，依其数字大小，继续搜寻左半段或者右半段。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration14.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void find_number()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int array[15] =
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        2, 3, 5, 7, 11,
+\end_layout
+
+\begin_layout Plain Layout
+
+        13, 17, 19, 23, 29,
+\end_layout
+
+\begin_layout Plain Layout
+
+        31, 37, 41, 43, 47
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    int left = 0, right = 15-1;
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (left < right)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        int mid = (left + right) / 2;
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (array[mid] < 29)
+\end_layout
+
+\begin_layout Plain Layout
+
+            left = mid + 1;     // 继续搜寻剩下的右半段
+\end_layout
+
+\begin_layout Plain Layout
+
+        else if (array[mid] > 29)
+\end_layout
+
+\begin_layout Plain Layout
+
+            right = mid - 1;    // 继续搜寻剩下的左半段
+\end_layout
+
+\begin_layout Plain Layout
+
+        else if (array[mid] == 29)
+\end_layout
+
+\begin_layout Plain Layout
+
+        {
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 找到了其中一个数字
+\end_layout
+
+\begin_layout Plain Layout
+
+            cout << mid << ':' << array[mid];
+\end_layout
+
+\begin_layout Plain Layout
+
+            return;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+找到所有特定数字：读者请自行尝试。
+\end_layout
+
+\begin_layout Subsection
+范例：平面上距离最近的两个点（ Closest Pair Problem ）
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration15.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+找到距离最近的其中一对点：预先依照 X 坐标排序所有点，搜寻得以略过大量情况。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+struct Point {float x, y;};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// 计算两点之间的距离
+\end_layout
+
+\begin_layout Plain Layout
+
+float dist(Point& a, Point& b)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    float dx = a.x - b.x;
+\end_layout
+
+\begin_layout Plain Layout
+
+    float dy = a.y - b.y;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return sqrt(dx * dx + dy * dy);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+bool cmp(const Point& i, const Point& j)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    return i.x < j.x;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void closest_pair()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    Point point[10] =
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        {3, 3}, {1, 5}, {4, 6}, {2, 8}, {9, 9},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {2, 1}, {7, 2}, {6, 5}, {9, 4}, {5, 9}
+\end_layout
+
+\begin_layout Plain Layout
+
+    };
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 依照X坐标排序所有点
+\end_layout
+
+\begin_layout Plain Layout
+
+    sort(point, point+10, cmp);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    float d = 1e9;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<10; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int j=i+1; j<10; j++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        {
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 两个点的X坐标已经相距太远，直接略过，
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 继续枚举下一个左端点。
+\end_layout
+
+\begin_layout Plain Layout
+
+            if (p[j].x - p[i].x > d) break;
+\end_layout
+
+\begin_layout Plain Layout
+
+            d = min(d, dist(point[i], point[j]));
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << "距离是" << d;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+找到距离最近的每一对点：读者请自行尝试。
+\end_layout
+
+\begin_layout Subsection
+范例：英文单字从单数变复数
+\end_layout
+
+\begin_layout Standard
+枚举各种情况，写成大量判断式。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration16.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void plural(string s)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n = s.length();
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (s.back() == 'y')
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << s.substr(0, n-1) << "ies";
+\end_layout
+
+\begin_layout Plain Layout
+
+    else if (s.back() == 's' || s.back() == 'x')
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << s << "es";
+\end_layout
+
+\begin_layout Plain Layout
+
+    else if (s.substr(n-2) == "sh" || s.substr(n-2) == "ch")
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << s << "es";
+\end_layout
+
+\begin_layout Plain Layout
+
+    else if (s.substr(n-3) == "man")
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << s.substr(0, n-3) << "men";
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+        cout << s << 's';
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：小画家倒墨水（ Flood Fill Algorithm ）
+\end_layout
+
+\begin_layout Standard
+计算机图片可以想成是一张方格纸，每个方格都填着一种颜色。现在要实现小画家倒墨水的功能：以某一格为起点，只要相邻方格颜色一样，就染成同一个颜色。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration17.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+运用大量指令，枚举上下左右四个方向；运用递归，枚举相邻同色方格。 
+\end_layout
+
+\begin_layout Standard
+必须避免已经枚举过的方格又重复枚举，否则程序在有生之年都不会结束。 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int image[10][10];	  // 图片的大小为 10x10
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void flood(int x, int y, int new_color, int old_color)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (x>=0 && x<10 && y>=0 && y<10)   // 不能超出边界
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (image[x][y] == old_color)   // 同色方格才枚举
+\end_layout
+
+\begin_layout Plain Layout
+
+        {
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 染色
+\end_layout
+
+\begin_layout Plain Layout
+
+            image[x][y] = new_color;
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 枚举上下左右四个方向
+\end_layout
+
+\begin_layout Plain Layout
+
+            flood(x+1, y, new_color, old_color);
+\end_layout
+
+\begin_layout Plain Layout
+
+            flood(x-1, y, new_color, old_color);
+\end_layout
+
+\begin_layout Plain Layout
+
+            flood(x, y+1, new_color, old_color);
+\end_layout
+
+\begin_layout Plain Layout
+
+            flood(x, y-1, new_color, old_color);
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void ink()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 在坐标(7,6)的方格，淋上1号颜色。
+\end_layout
+
+\begin_layout Plain Layout
+
+    flood(7, 6, 1, image[7][6]);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+大量指令，亦得写成一个循环。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void flood(int x, int y, int new_color, int old_color)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (x>=0 && x<10 && y>=0 && y<10)
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (image[x][y] == old_color)
+\end_layout
+
+\begin_layout Plain Layout
+
+        {
+\end_layout
+
+\begin_layout Plain Layout
+
+            image[x][y] = new_color;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+            // 写成一个循环
+\end_layout
+
+\begin_layout Plain Layout
+
+            for (int i=0; i<4; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+            {
+\end_layout
+
+\begin_layout Plain Layout
+
+                static int dx[4] = {1, -1, 0, 0};
+\end_layout
+
+\begin_layout Plain Layout
+
+                static int dy[4] = {0, 0, 1, -1};
+\end_layout
+
+\begin_layout Plain Layout
+
+                flood(x + dx[i], y + dy[i], new_color, old_color);
+\end_layout
+
+\begin_layout Plain Layout
+
+            }
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+多层判断式，亦得拆解成一层一层的判断式。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void flood(int x, int y, int new_color, int old_color)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (!(x>=0 && x<10 && y>=0 && y<10)) return;
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (image[x][y] != old_color) return;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    image[x][y] = new_color;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 写成一个循环
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<4; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        static int dx[4] = {1, -1, 0, 0};
+\end_layout
+
+\begin_layout Plain Layout
+
+        static int dy[4] = {0, 0, 1, -1};
+\end_layout
+
+\begin_layout Plain Layout
+
+        flood(x + dx[i], y + dy[i], new_color, old_color);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "260"
+target "http://uva.onlinejudge.org/external/2/260.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "280"
+target "http://uva.onlinejudge.org/external/2/280.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "352"
+target "http://uva.onlinejudge.org/external/3/352.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "469"
+target "http://uva.onlinejudge.org/external/4/469.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "572"
+target "http://uva.onlinejudge.org/external/5/572.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "601"
+target "http://uva.onlinejudge.org/external/6/601.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "657"
+target "http://uva.onlinejudge.org/external/6/657.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "776"
+target "http://uva.onlinejudge.org/external/7/776.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "782"
+target "http://uva.onlinejudge.org/external/7/782.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "784"
+target "http://uva.onlinejudge.org/external/7/784.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "785"
+target "http://uva.onlinejudge.org/external/7/785.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "871"
+target "http://uva.onlinejudge.org/external/8/871.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10267"
+target "http://uva.onlinejudge.org/external/102/10267.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10336"
+target "http://uva.onlinejudge.org/external/103/10336.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10946"
+target "http://uva.onlinejudge.org/external/109/10946.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+ICPC 
+\begin_inset CommandInset href
+LatexCommand href
+name "4792"
+target "http://livearchive.onlinejudge.org/external/47/4792.pdf"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "5130"
+target "http://livearchive.onlinejudge.org/external/51/5130.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Straightforward Method / Trial and Error
+\end_layout
+
+\begin_layout Standard
+「直接法」，直接算出答案。例如按照流程进行得到答案、套用公式计算答案、直接印出答案。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "488"
+target "http://uva.onlinejudge.org/external/4/488.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10055"
+target "http://uva.onlinejudge.org/external/100/10055.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10370"
+target "http://uva.onlinejudge.org/external/103/10370.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10878"
+target "http://uva.onlinejudge.org/external/108/10878.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10929"
+target "http://uva.onlinejudge.org/external/109/10929.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+「尝试错误法」、「试误法」，针对答案进行 Enumerate 与 Search 。有些困难的问题，难以直接推导答案，既然推导不出来，就慢慢测试答案、慢慢验算吧─
+─确立答案的范围，穷举所有可能的答案，再从中搜寻正确答案。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "10167"
+target "http://uva.onlinejudge.org/external/101/10167.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10125"
+target "http://uva.onlinejudge.org/external/101/10125.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "296"
+target "http://uva.onlinejudge.org/external/2/296.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "846"
+target "http://uva.onlinejudge.org/external/8/846.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "714"
+target "http://uva.onlinejudge.org/external/7/714.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+直接法和试误法刚好相反。直接法是由题目本身下手，推导答案；试误法则是从答案下手，让答案迎合题目需求。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration18.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：暴力攻击（ Brute Force Attack ）
+\end_layout
+
+\begin_layout Standard
+破解密码最简单的方法叫做「暴力攻击」。不知道密码规律的情况下，无法直接推导正确密码，只好以试误法一一检验所有可能的密码，从中找出正确密码。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration19.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：单向函数（ One-way Function ）
+\end_layout
+
+\begin_layout Standard
+「单向函数」是一种特别的函数，给定输入很容易算出输出，但是给定输出却很难算出输入。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Enumeration20.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+举例来说，令一个函数的输入是两个质数，输出是两个质数的乘积。给定两个质数可以轻易的在多项式时间内算出乘积，然而给定两质数的乘积却需要指数时间才能完成质因子分解。
+\end_layout
+
+\begin_layout Standard
+如果给定一个单向函数的输入，求其输出，就适合用直接法，套用函数快速算得答案；如果给定一个单向函数的输出，求其输入，就适合用试误法，尝试各种输入并套用函数快速验证
+答案。 
+\end_layout
+
+\begin_layout Section
+Iterative Method
+\end_layout
+
+\begin_layout Standard
+\align right
+
+\shape italic
+道生一，一生二，二生三，三生万物。《老子》
+\end_layout
+
+\begin_layout Subsection
+Iterative Method
+\end_layout
+
+\begin_layout Standard
+繁中「迭代法」、简中「递推法」。不断利用目前求得的数值，再求得新数值。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "997"
+target "http://uva.onlinejudge.org/external/9/997.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：字符串变整数
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Iterative1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+直觉的方式是递增法。个、十、百、千、万、……，每个位数分别乘上 10 的次方，通通加起来。此处按照高位数到低位数的顺序进行处理，以符合字符串的储存顺序。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Iterative2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+// 计算字符串长度
+\end_layout
+
+\begin_layout Plain Layout
+
+int string_length(char* s)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (s[n]) n++;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return n;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// 计算10的exp次方
+\end_layout
+
+\begin_layout Plain Layout
+
+int pow10(int exp)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<exp; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        n *= 10;
+\end_layout
+
+\begin_layout Plain Layout
+
+    return n;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void string_to_integer()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    char s[10] = "26962869";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 预先计算字符串长度。
+\end_layout
+
+\begin_layout Plain Layout
+
+    int length = string_length(s);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 依序处理高位数到低位数。
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; i<length; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        n += (s[i] - '0') * pow10(length - 1 - i);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << n;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+更好的方式是递推法！由高位数到低位数、也就是由左到右读取字符串，每读取一个字符，就将数值乘以十、加上当前字符的对应数字。
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void string_to_integer()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    char s[10] = "26962869";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int i=0; s[i]; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+        n = n * 10 + s[i] - '0';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    cout << n;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+同一个问题，有着不同的解法。有着程序代码很长、执行速度很慢的方法，也有着程序代码很短，执行速度很快的方法。一支程序的好坏，除了取决于正确性和可读性之外，同时也取
+决于计算方法。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "759"
+target "http://uva.onlinejudge.org/external/7/759.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：秦九韶算法（ Horner's Rule ）
+\end_layout
+
+\begin_layout Standard
+多项式函数，代入数值。一乘一加，不断更迭，求得函数值。完全不需要次方运算。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Iterative4.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例： 3n+1 猜想（ Collatz Conjecture ）
+\end_layout
+
+\begin_layout Standard
+猜想的内容是这样的：有一个整数，如果是偶数，就除以 2 ；如果是奇数，就乘以 3 再加 1 。一个整数不断这样操作下去，最后一定会变成 1 。这个操作的过程就是
+一种递推。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Iterative5.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+至今尚未有人能证明其正确性。有趣的是，目前也尚未检查出任何反例。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "100"
+target "http://uva.onlinejudge.org/external/1/100.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "371"
+target "http://uva.onlinejudge.org/external/3/371.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "694"
+target "http://uva.onlinejudge.org/external/6/694.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：除法
+\end_layout
+
+\begin_layout Standard
+不断乘以十、除以除数，就是一种递推。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Iterative6.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：牛顿法（ Newton's Method ）
+\end_layout
+
+\begin_layout Standard
+一个经典的递推法范例，微积分课程一定有教过。牛顿法用来求连续函数的其中一个根。一开始先随便设定一点，不断利用斜率求出下一点。
+\begin_inset Formula 
+\[
+X_{n+1}=X_{n}-\frac{f(X_{n})}{f'(X_{n})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Iterative7.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：十分逼近法
+\end_layout
+
+\begin_layout Standard
+数线分割成十等份区间，从中找出正确区间，把对应的小数字数添到答案末端，然后不断十等分下去。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Iterative8.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：书塔（ Book Stacking Problem ）
+\end_layout
+
+\begin_layout Standard
+将书本一本一本迭起来，成为一座斜塔，越斜越好。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Iterative9.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+对于任何一本书来说，其上方所有书本的整体重心，必须落在这本书上，这本书才能平稳地支撑住上方所有书本。
+\end_layout
+
+\begin_layout Standard
+将书本插入到书塔底部，让书塔的重心落在书本边缘，就可以让书塔最斜。插入书本到书塔底部之后，就更新书塔的重心位置，以便稍后插入下一本书本。
+\end_layout
+
+\begin_layout Standard
+不断插入书本到书塔底部、更新书塔重心，运用先前的书塔求得新的书塔──这段过程就是一种递推。 
+\end_layout
+
+\begin_layout Subsection
+范例：生命游戏（ The Game of Life ）（ Cellular Automata ）
+\end_layout
+
+\begin_layout Standard
+一个二维的方格平面，每个格子都有一个细胞，可能是活的，可能是死的。细胞的生命状况，随时间变动，变动规则如下：
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+复活：一个死的细胞，若是它的八个邻居，有三个细胞是活的，则在下一刻复活。
+\end_layout
+
+\begin_layout Plain Layout
+存活：一个活的细胞，若是它的八个邻居，有两个或三个细胞是活的，则在下一刻存活。
+\end_layout
+
+\begin_layout Plain Layout
+死于孤单：一个活的细胞，若是它的八个邻居，只有零个或一个细胞是活的，则在下一刻死亡。
+\end_layout
+
+\begin_layout Plain Layout
+死于拥挤：一个活的细胞，若是它的八个邻居，有四个以上的细胞是活的，则在下一刻死亡。 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Iterative10.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+实作时，我们可以弄两张地图，第一张地图储存现在这个时刻的状态，第二张地图储存下一个时刻的状态。两张地图交替使用，以节省内存空间。
+\end_layout
+
+\begin_layout Standard
+细胞的变动规则，包装成一个函数，让程序代码易读。 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void go(int x, int y, bool map1[100][100], bool map2[100][100])
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    int n = 八个邻居中，还活着的细胞数目;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (!map1[x][y])
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (n == 3)                 // 复活
+\end_layout
+
+\begin_layout Plain Layout
+
+            map2[x][y] = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+        else                        // 仍旧死亡
+\end_layout
+
+\begin_layout Plain Layout
+
+            map2[x][y] = map1[x][y];
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (n == 2 || n == 3)       // 存活
+\end_layout
+
+\begin_layout Plain Layout
+
+            map2[x][y] = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+        else if (n == 0 || n == 1)  // 死于孤单
+\end_layout
+
+\begin_layout Plain Layout
+
+            map2[x][y] = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+        else if (n >= 4)            // 死于拥挤
+\end_layout
+
+\begin_layout Plain Layout
+
+            map2[x][y] = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void cellular_automata()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    bool map[2][100][100];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    map[0][50][50] = true;  // 自行设定一些活的细胞
+\end_layout
+
+\begin_layout Plain Layout
+
+    map[0][50][51] = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+    map[0][51][50] = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (int t=0; t<100; ++t)
+\end_layout
+
+\begin_layout Plain Layout
+
+        for (int x=0; x<100; ++x)
+\end_layout
+
+\begin_layout Plain Layout
+
+            for (int y=0; y<100; ++y)
+\end_layout
+
+\begin_layout Plain Layout
+
+                go(x, y, map[t%2], map[(t+1)%2]);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "447"
+target "http://uva.onlinejudge.org/external/4/447.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "457"
+target "http://uva.onlinejudge.org/external/4/457.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10443"
+target "http://uva.onlinejudge.org/external/104/10443.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10507"
+target "http://uva.onlinejudge.org/external/105/10507.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：兰顿的蚂蚁（ Langton's Ant ）
+\end_layout
+
+\begin_layout Standard
+跟生命游戏相似，不过这个游戏更神奇。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+一、格子有黑与白两种颜色。 
+\end_layout
+
+\begin_layout Plain Layout
+二、蚂蚁走入白格则右转，走入黑格则左转。
+\end_layout
+
+\begin_layout Plain Layout
+三、蚂蚁离开格子时，格子颜色颠倒。 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+惊人的是，乍看完全没有规律的路线，却在 10647 步之后开始循环。原因至今不明。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "11664"
+target "http://uva.onlinejudge.org/external/116/11664.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：以试除法建立质数表
+\end_layout
+
+\begin_layout Standard
+从表面上来看是两层的枚举法：第一层先枚举正整数，一一试验是否为质数；第二层再枚举所有已知质数，一一试除。
+\end_layout
+
+\begin_layout Standard
+但是从另一个角度来看，利用目前求得的质数，再求出更多质数，其实就是递推法。 
+\end_layout
+
+\begin_layout Subsection
+范例：数学归纳法（ Mathematical Induction ）
+\end_layout
+
+\begin_layout Standard
+数学归纳法的第二步骤，就是证明可不可以递推！第二步骤的证明过程中一定会用到递推！
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+1.
+ 先证明 
+\begin_inset Formula $n=1$
+\end_inset
+
+ 成立。（有时候不见得要从1开始。）
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ 假设 
+\begin_inset Formula $n=k$
+\end_inset
+
+ 成立，证明 
+\begin_inset Formula $n=k+1$
+\end_inset
+
+ 也会成立。
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+当 1.
+ 2.
+ 得证，就表示 
+\begin_inset Formula $n=1\cdots\infty$
+\end_inset
+
+ 全部都成立。 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Recursive Method
+\end_layout
+
+\begin_layout Standard
+\align right
+
+\shape italic
+易有太极，是生两仪。两仪生四象，四象生八卦。《易传》
+\end_layout
+
+\begin_layout Subsection
+Recursive Method
+\end_layout
+
+\begin_layout Standard
+繁中「递归法」、简中「递归法」。重复运用相同手法，缩减问题范围，直到厘清细节。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "10994"
+target "http://uva.onlinejudge.org/external/109/10994.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10212"
+target "http://uva.onlinejudge.org/external/102/10212.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10471"
+target "http://uva.onlinejudge.org/external/104/10471.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10922"
+target "http://uva.onlinejudge.org/external/109/10922.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：碎形（ Fractal ）
+\end_layout
+
+\begin_layout Standard
+利用相同手法绘图，绘图范围越来越精细。
+\end_layout
+
+\begin_layout Standard
+图中的碎形称作 Sierpinski triangle 。凡是尖端朝上的正三角形，就在当中放置一个尖端朝下的正三角形；放置之后，图形就变得更细腻，范围就变得更小
+了。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Recursive1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+图中的碎形称作 Kosh snowflake 。一条边三等分，去除中段，朝外补上两段，形成尖角。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Recursive2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+图中的碎形称作 Pythagorean tree 。不断绘制正方形、直角三角形，看起来像是一棵茂密的树。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/618px-Pythagoras_tree_1_1_13_Summer.svg.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "177"
+target "http://uva.onlinejudge.org/external/1/177.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10609"
+target "http://uva.onlinejudge.org/external/106/10609.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：质因子分解（ Integer Factorization ）
+\end_layout
+
+\begin_layout Standard
+不断抽取出质因子，使数值不断变小，直到成为质因子。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Recursive3.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例： L 形磁砖
+\end_layout
+
+\begin_layout Standard
+有一个边长为 2 的 3 次方的正方形，右上角缺了一角边长为 1 的正方形。现在要以 L 形磁砖贴满这个缺了一角的正方形，该如何贴呢？
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Recursive4.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+巧妙地将一块 L 形磁砖放在中央的位置，就顺利的把正方形切成四个比较小的、亦缺了一角的正方形。接下来只要递归处理四个小正方形，就解决问题了。
+\end_layout
+
+\begin_layout Standard
+这个问题也可以改成缺口在任意一处，各位可以想想看怎么解。 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "10230"
+target "http://uva.onlinejudge.org/external/102/10230.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：辗转相除法（ Euclid's Algorithm ）
+\end_layout
+
+\begin_layout Standard
+两个数字轮流相除、求余数，最后就得到最大公因子（ greatest common divisor, gcd ）。相信大家小时候都有学过。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Recursive5.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+我们可以把最大公因子想象成砖块、把两个数字都看成是最大公因子的倍数。
+\end_layout
+
+\begin_layout Standard
+两数相减所得的差值，一定是最大公因子的倍数。更进一步来说，两数相除所得的余数，一定是最大公因子的倍数。辗转相除法的过程当中，两数自始至终都是最大公因子的倍数。
+\end_layout
+
+\begin_layout Standard
+运用这个性质，我们把两数相除、求余数，使得原始数字不断缩小，直到得到最大公因子。真是非常巧妙的递归法！ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+// 运用程序语言的循环语法。
+\end_layout
+
+\begin_layout Plain Layout
+
+int gcd(int a, int b)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 令 a 比 b 大，比较容易思考。
+\end_layout
+
+\begin_layout Plain Layout
+
+    while (b != 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        int t = a % b;
+\end_layout
+
+\begin_layout Plain Layout
+
+        a = b;
+\end_layout
+
+\begin_layout Plain Layout
+
+        b = t;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+    return a;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "70col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={C++},numbers=left,basicstyle={\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+// 运用程序语言的递归语法。
+\end_layout
+
+\begin_layout Plain Layout
+
+int gcd(int a, int b)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    // 令 a 比 b 大，比较容易思考。
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (b == 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+        return a;
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+        return gcd(b, a % b);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+注意到，递推法、递归法，不等于程序语言中的循环、递归。递推法、递归法是分析问题的方法，用来得到计算过程、用来得到算法。至于编写程序时，我们可以自由地采用循环或者
+递归。
+\end_layout
+
+\begin_layout Subsection
+递推法、递归法，一体两面，同时存在。
+\end_layout
+
+\begin_layout Standard
+递推法与递归法恰好颠倒：递推法是针对已知，逐步累积，直至周全；递归法是针对未知，反复拆解，直至精确。
+\end_layout
+
+\begin_layout Standard
+递推法是由小到大，递归法是由大到小。 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Recursive6.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：秦九韶算法（ Horner's Rule ）
+\end_layout
+
+\begin_layout Standard
+递推法是不断配 x ，扩增已知；递归法是不断提 x ，减少未知。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $ax^{2}+bx+c$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Iterative Method:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a\}*x^{2}+b*x^{1}+c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a,*x\}*x^{1}+b*x^{1}+c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a,*x,+b\}*x^{1}+c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a,*x,+b,*x\}+c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a,*x,+b,*x,+c\}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Recursive Method:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a*x^{2}+b*x^{1}+c\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a*x^{2}+b*x^{1}\},+c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a*x^{1}+b\},*x,+c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a*x^{1}\},+b,*x,+c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{a\},*x,+b,*x,+c$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+虽然递推法与递归法的推理方向是相反的，但是递推法与递归法的计算方向是一样的，两者都是由小范围算到大范围。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Iterative Method:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $a,*x,+b,*x,+c$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Recursive Method:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $a,*x,+b,*x,+c$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "10em"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+UVa 
+\begin_inset CommandInset href
+LatexCommand href
+name "498"
+target "http://uva.onlinejudge.org/external/4/498.html"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "10268"
+target "http://uva.onlinejudge.org/external/102/10268.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+范例：爬楼梯
+\end_layout
+
+\begin_layout Standard
+眼前有五阶楼梯，一次只能踏一阶或踏两阶，那么爬到五阶总共有哪几种踏法？例如 (1,1,1,1,1) 是其中一种踏法， (1,2,2) 是另一种踏法。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/Recursive7.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+这个问题可以用递推法，也可以用递归法。
+\end_layout
+
+\begin_layout Standard
+首先采用递推法。试着只爬少少的几阶楼梯，观察一下踏法。
+\end_layout
+
+\begin_layout Standard
+爬到一阶的踏法：很明显的只有一种， (1) 。
+\end_layout
+
+\begin_layout Standard
+爬到两阶的踏法：有两种， (1,1) 和 (2) 。
+\end_layout
+
+\begin_layout Standard
+爬到三阶的踏法：因为一次只能踏一阶或踏两阶，所以只可能从第一阶或从第二阶踏上第三阶。只要综合 ( 爬到一阶的踏法 ,2) 与 ( 爬到两阶的踏法
+ ,1) ，就是爬到三阶的踏法。
+\end_layout
+
+\begin_layout Standard
+爬到四阶的踏法：同理，综合 ( 爬到两阶的踏法 ,2) 与 ( 爬到三阶的踏法 ,1) 即得。
+\end_layout
+
+\begin_layout Standard
+递推下去，就可求出爬到五阶的踏法。 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Forward Iterative Method:
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+爬到一阶
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+爬到两阶
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,1) (2) 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+爬到三阶
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+即是(爬到一阶,2)与(爬到二阶,1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,1,1) (2,1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+爬到四阶
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+即是(爬到二阶,2)与(爬到三阶,1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,1,2) (2,2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,2,1) (1,1,1,1) (2,1,1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+爬到五阶
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+即是(爬到三阶,2)与(爬到四阶,1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,2,2) (1,1,1,2) (2,1,2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,1,2,1) (2,2,1) (1,2,1,1) (1,1,1,1,1) (2,1,1,1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+前面是采用上楼梯的顺序进行递推，由第一阶递推到第五阶。也可以采用下楼梯的顺序进行递推，由第五阶递推到第一阶。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Backward Iterative Method:
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+降到四阶
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+降到三阶
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,1) (2) 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+降到二阶
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+即是(2,降到四阶)与(1,降到三阶)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,1,1) (2,1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+降到一阶
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+即是(2,降到三阶)与(1,降到二阶)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,1,2) (2,2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,2,1) (1,1,1,1) (2,1,1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+降到平面
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+即是(2,降到二阶)与(1,降到一阶)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,2,2) (1,1,1,2) (2,1,2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(1,1,2,1) (2,2,1) (1,2,1,1) (1,1,1,1,1) (2,1,1,1)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+有一些问题，比如爬楼梯问题，双向都可以递推。数值由小到大的方向称为「正向」或「顺向」（ forward ），数值由大到小的方向称为「反向」或「逆向」（
+ backward ）。
+\end_layout
+
+\begin_layout Standard
+接着采用递归法。由踏出的最后一步开始分析。
+\end_layout
+
+\begin_layout Standard
+要「爬到五阶」，最后一步一定是踏上第五阶。要踏上第五阶，只可能从第四阶和第三阶踏过来，也就是综合 ( 爬到四阶的踏法 ,1) 与 ( 爬到三阶的踏法
+ ,2) 。
+\end_layout
+
+\begin_layout Standard
+但是我们尚不知如何「爬到四阶」和「爬到三阶」，所以只好再分别研究「爬到四阶」与「爬到三阶」。不断追究到「爬到一阶」与「爬到两阶」的时候，就能确认答案了！
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Forward(?) Recursive Method:
+\end_layout
+
+\begin_layout Plain Layout
+爬到五阶　即是(爬到四阶,1)与(爬到三阶,2)
+\end_layout
+
+\begin_layout Plain Layout
+爬到四阶　即是(爬到三阶,1)与(爬到二阶,2)
+\end_layout
+
+\begin_layout Plain Layout
+爬到三阶　即是(爬到二阶,1)与(爬到一阶,2)
+\end_layout
+
+\begin_layout Plain Layout
+爬到两阶　(2) (1,1)
+\end_layout
+
+\begin_layout Plain Layout
+爬到一阶　(1) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+当然也可以双向递归。就不赘述了。
+\end_layout
+
+\begin_layout Subsection
+范例：格雷码（ Gray Code ）
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Iterative Method:
+\end_layout
+
+\begin_layout Plain Layout
+GrayCode(n-1)的每个数字，最高位数加一个0。
+\end_layout
+
+\begin_layout Plain Layout
+GrayCode(n-1)的每个数字，高位数与低位数整个颠倒，然后在最高位数加一个1。
+\end_layout
+
+\begin_layout Plain Layout
+两者衔接起来就是GrayCode(n)。
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Recursive Method:
+\end_layout
+
+\begin_layout Plain Layout
+GrayCode(n)的每个数字，分成两类。
+\end_layout
+
+\begin_layout Plain Layout
+第一类最高位数是0，把最高位数拿掉后，即形成GrayCode(n-1)。
+\end_layout
+
+\begin_layout Plain Layout
+第二类最高位数是1，把最高位数拿掉后，即形成GrayCode(n-1)。 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+也可以用最低位数为主，进行递推、递归，生成顺序不同的 Gray Code 。 Gray Code 具有循环的特性，有多种递推、递归方式，不分正向与逆向。
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
