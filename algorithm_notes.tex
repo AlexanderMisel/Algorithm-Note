@@ -2746,5 +2746,203 @@ GrayCode(n)的每个数字，分成两类。
 
 也可以用最低位数为主，进行递推、递归，生成顺序不同的 Gray Code 。 Gray Code 具有循环的特性，有多种递推、递归方式，不分正向与逆向。
 
+
+\section{Divide and Conquer}
+
+\begin{flushright}
+\textit{凡治众如治寡，分数是也。斗众如斗寡，形名是也。《孙子》}
+\par\end{flushright}
+
+
+\subsection{Divide and Conquer}
+
+「分治法」，分割问题、各个击破。将一个大问题，分割成许多小问题。如果小问题还是很难，就继续分割成更小的问题，直到问题变得容易解决。
+
+分割出来的小问题，称作「子问题 subproblem 」。解决一个问题，等价于解决所有子问题。 
+
+用树形图表达原问题与子问题的关系，最好不过！ 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer1}
+\par\end{center}
+
+分治法着重分割问题的方式──要怎么分割问题，使得子问题简单又好算？各位读者可以藉由本文的范例，体会分割问题的方式。
+
+
+\subsection{范例：分解动作}
+
+想要学习「从中场带球上篮」，我们可以将此动作分割为「跑步运球」、「跑步收球」、「单手将球放入篮框」等动作，分别学习。每一项动作都熟练之后，组合起来便是带球上篮了。
+
+如果觉得「跑步运球」还是太难，可以更细分成「原地运球」、「走动运球」、「运球时护球」等动作，克服了之后便能够顺利解决「跑步运球」的问题了。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer2}
+\par\end{center}
+
+
+\subsection{范例：方格法求面积}
+
+左边为原问题，右边放大并细分的图是其中一个子问题。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer3}
+\par\end{center}
+
+
+\subsection{范例：分类数数}
+
+左边最大的框框是原问题，将原问题的数字进行分类后再统计，分类后的每一个框框都是一个子问题。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer4}
+\par\end{center}
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/110/11038.html}{11038}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{Recursive Method}
+
+在分治法当中，亦得递归地分割问题，其实就是递归法。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer5}
+\par\end{center}
+
+程序代码细分为三个阶段： Divide 、 Conquer 、 Combine 。 Divide 阶段是把原问题分割成小问题， Conquer
+阶段是解决小问题， Combine 阶段是运用小问题的解答，整理出原问题的解答。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer6}
+\par\end{center}
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+divide_and_conquer(原问题)
+{
+    /* Divide */
+    先将原问题分割成许多小问题;
+
+    /* Conquer */
+    递归调用函数，求得子问题的解;
+    解答1 = divide_and_conquer(子问题1);
+    解答2 = divide_and_conquer(子问题2);
+    ......
+
+    /* Combine */
+    用小问题的解答，算出原问题的解答;
+    原问题解答 = 解答1 + 解答2 + ......;
+
+    return 原问题解答;
+}
+\end{lstlisting}
+
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/6/620.html}{620}
+\protect\href{http://uva.onlinejudge.org/external/101/10101.html}{10101}
+\protect\href{http://uva.onlinejudge.org/external/101/10144.html}{10144}
+\protect\href{http://uva.onlinejudge.org/external/109/10998.html}{10998}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{范例：归并排序法（ Merge Sort ）}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer7}
+\par\end{center}
+
+Divide 阶段：数据分割成两堆。 
+
+Conquer 阶段：两堆资料各自从事 Merge Sort 。 
+
+Combine 阶段：两堆已排序过的数据，合并成一堆。 
+
+
+\subsection{范例：快速排序法（ Quicksort ）}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer8}
+\par\end{center}
+
+Divide 阶段：选择一个数值当作基准，把数据分割成左右两堆，使得左堆数值小于基准，右堆数值大于基准，基准数值置于左右两堆中间。
+
+Conquer 阶段：左右两堆资料各自从事 Quicksort 。
+
+Combine 阶段：不做任何事。 
+
+
+\subsection{范例：不重复组合（ Combination ）}
+
+从 N 个人抓 M 个人出来组团，有哪些组合方式呢？
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer9}
+\par\end{center}
+
+N 个人当中的其中一个人，叫做甲君好了，我们将原问题分割成两种情形：甲君在团中、甲君不在团中。
+
+\noindent %
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+甲君在团中，演变成剩下N-1个人要再抓M-1个人出来组团。
+
+甲君不在团中，演变成剩下N-1个人仍要抓M个人出来组团。 %
+\end{minipage}}
+
+综合这两个子问题的组合方式，就得到答案。
+
+
+\subsection{范例：汉诺塔（ Tower of Hanoi ）}
+
+三根柱子、一迭盘子，盘子大小皆不同（盘子中间还得打个洞，这样盘子才能穿在柱子上）。所有盘子都迭在第一根柱子，大的在下面，小的在上面。现在要将整迭盘子移到第三根柱子，并且保持原来的大小顺序。每次只能搬动一个盘子到别根柱子，而且大的盘子一定要保持在小的盘子下面。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer10}
+\par\end{center}
+
+想要移动最大的盘子到第三根柱子，必须先挪开上方整迭盘子到第二根柱子。移动上方整迭盘子，正好与原问题相同、而少了一个盘子，可以视作子问题。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer11}
+\par\end{center}
+
+尝试以此子问题解决原问题，解题过程因而简化成三个步骤：一、上方整迭盘子移到第二根柱子；二、最大的盘子移到第三根柱子；三、方才的整迭盘子移到第三根柱子。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer12}
+\par\end{center}
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+int p[5];   // 盘子所在的柱子。第i小的盘子放在第p[i]根柱子。
+
+void move(int n, int t) // 将前n小的盘子移到第t根柱子
+{
+    if (n == 0) return;
+    move(n-1, 6-p[n]-t);
+    cout << "从" << p[n] << "移到" << t;
+    p[n] = t;
+    move(n-1, t);
+}
+
+void tower_of_hanoi()
+{
+    // 五个盘子，都迭在第一根柱子。
+    for (int i=1; i<=5; ++i) p[i] = 1;
+    // 五个盘子，从第一根柱子移到第三根柱子。
+    move(5, 3);
+}
+\end{lstlisting}
+
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/100/10017.html}{10017}\end{shaded}%
+\end{minipage}}
+
 \noindent \clearpage{}
 \end{document}
