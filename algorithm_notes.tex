@@ -22,6 +22,9 @@
 \pdfpageheight\paperheight
 \pdfpagewidth\paperwidth
 
+\newcommand{\lyxmathsym}[1]{\ifmmode\begingroup\def\b@ld{bold}
+  \text{\ifx\math@version\b@ld\bfseries\fi#1}\endgroup\else#1\fi}
+
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
 %% A simple dot to overcome graphicx limitations
@@ -1477,7 +1480,7 @@ void find_all_number()
     int array[5] = {3, 6, 9, -8, 1};
 
     for (int i=0; i<5; i++) // 枚举
-        if (array[i] == 6)  // 搜寻
+        if (array[i] == 6)  // 搜索
             cout << i << ':' << array[i] << '\n';
 }
 \end{lstlisting}
@@ -1495,7 +1498,7 @@ bool find_number()
     int array[5] = {3, 6, 9, -8, 1};
 
     for (int i=0; i<5; i++) // 枚举
-        if (array[i] == 6)  // 搜寻
+        if (array[i] == 6)  // 搜索
         {
             cout << i << ':' << array[i];
             return true;
@@ -1866,7 +1869,7 @@ UVa \protect\href{http://uva.onlinejudge.org/external/9/972.html}{972}
 
 \subsection{范例：寻找数组之中的最小值，数组已经由小到大排序}
 
-找到其中一个最小值：经常整理房间，寻找东西就快；预先排序数据，搜寻速度就快。
+找到其中一个最小值：经常整理房间，寻找东西就快；预先排序数据，搜索速度就快。
 
 \begin{center}
 \includegraphics[scale=0.5]{images/Enumeration13}
@@ -1886,7 +1889,7 @@ void find_minimum()
 
 \subsection{范例：寻找数组之中的特定数字，数组已经由小到大排序}
 
-找到其中一个特定数字：首先找到数组中央的数字，依其数字大小，继续搜寻左半段或者右半段。
+找到其中一个特定数字：首先找到数组中央的数字，依其数字大小，继续搜索左半段或者右半段。
 
 \begin{center}
 \includegraphics[scale=0.5]{images/Enumeration14}
@@ -1907,9 +1910,9 @@ void find_number()
     {
         int mid = (left + right) / 2;
         if (array[mid] < 29)
-            left = mid + 1;     // 继续搜寻剩下的右半段
+            left = mid + 1;     // 继续搜索剩下的右半段
         else if (array[mid] > 29)
-            right = mid - 1;    // 继续搜寻剩下的左半段
+            right = mid - 1;    // 继续搜索剩下的左半段
         else if (array[mid] == 29)
         {
             // 找到了其中一个数字
@@ -1930,7 +1933,7 @@ void find_number()
 \includegraphics[scale=0.5]{images/Enumeration15}
 \par\end{center}
 
-找到距离最近的其中一对点：预先依照 X 坐标排序所有点，搜寻得以略过大量情况。
+找到距离最近的其中一对点：预先依照 X 坐标排序所有点，搜索得以略过大量情况。
 
 \begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
 struct Point {float x, y;};
@@ -2123,7 +2126,7 @@ UVa \protect\href{http://uva.onlinejudge.org/external/4/488.html}{488}
 \protect\href{http://uva.onlinejudge.org/external/109/10929.html}{10929}\end{shaded}%
 \end{minipage}}
 
-「尝试错误法」、「试误法」，针对答案进行 Enumerate 与 Search 。有些困难的问题，难以直接推导答案，既然推导不出来，就慢慢测试答案、慢慢验算吧──确立答案的范围，穷举所有可能的答案，再从中搜寻正确答案。
+「尝试错误法」、「试误法」，针对答案进行 Enumerate 与 Search 。有些困难的问题，难以直接推导答案，既然推导不出来，就慢慢测试答案、慢慢验算吧──确立答案的范围，穷举所有可能的答案，再从中搜索正确答案。
 
 \noindent \marginpar{%
 \begin{minipage}[t]{10em}%
@@ -2943,6 +2946,406 @@ void tower_of_hanoi()
 \begin{shaded}%
 UVa \protect\href{http://uva.onlinejudge.org/external/100/10017.html}{10017}\end{shaded}%
 \end{minipage}}
+
+
+\subsection{Prune and Search}
+
+「修剪搜索法」是分治法的特例。去除不重要的子问题，只搜索重要的子问题。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer13}
+\par\end{center}
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/9/920.html}{920}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{范例：二分搜索法（ Binary Search ）}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer14}
+\par\end{center}
+
+这是在已排序数组里面搜索数值的方法。数组由中央切成两边，一边数字较小、一边数字较大。这两边一定有一边不是我们所要的，可以去除，只需要继续寻找其中一边。
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/100/10077.html}{10077}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{范例：寻找数组里第 k 大的数}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer15}
+\par\end{center}
+
+运用 Quicksort 的分割手法，把数组切成两边，一边数字较小、一边数字较大。这两边一定有一边不是我们所要的，可以去除，只需要继续寻找其中一边。
+
+
+\subsection{范例：寻找假币（ Counterfeit Coin Problem ）}
+
+一堆硬币，当中一枚硬币是假币，重量比真币轻，肉眼无法分辨差异。手边的工具仅有一台天平，但没有砝码，该如何藉由天平判断假币？
+
+当硬币总数为一，那么该币就是假币。当硬币总数为二，那么就无解了。当硬币总数为三以上，一定有办法找出假币，以下介绍两种策略。
+
+采用递增法。每次取两枚硬币，放在天平两端秤重。当天平平衡，表示这两枚硬币都是真币，接着继续处理剩余硬币。当天平倾斜，比较轻的硬币就是假币。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer16}
+\par\end{center}
+
+采用分治法。两枚硬币放在天平两端秤重，当天平平衡，表示这两枚硬币都是真币。接着只剩下 N-2 枚硬币要寻找假币──问题递归缩小了！
+
+剩下 N-2 枚，太多了一点。一次取多一点硬币，同时放在天平两端秤，问题就能缩小更多了！
+
+把所有硬币平均分成三份，取两份放在天平两端秤重。当天平平衡，表示剩下的一份含有假币，问题一次便缩小为 1/3 。当天平倾斜，表示比较轻的一份含有假币，问题一次便缩小为
+1/3 。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer17}
+\par\end{center}
+
+读者可以想想看：如果硬币数量不是三的次方怎么办？如果一开始不知道假币与真币孰轻孰重怎么办？
+
+
+\subsection{Marriage before Conquest}
+
+\noindent Yu-Han 说道：
+
+\noindent 2014/1/11 at 9:00\\
+
+
+\noindent 分享一下最近看到的技巧 – “marriage-before-conquest\textquotedbl{}
+
+\noindent 在做Divide and conquer中，递归求解的部份解答可以用来加速剩下的计算。\\
+
+
+\noindent 一个简单的例子是 http://www.geeksforgeeks.org/sorted-linked-list-to-balanced-bst/
+把已排序的单向链接串行转成平衡的二元搜索树。\\
+
+
+\noindent 如果是用很直接的找中点然后分半递归求解，
+
+\noindent 时间复杂度是$O(n\lg n)$，
+
+\noindent 但是实际上建立完左半边的时候，就可以直接得到中点，
+
+\noindent 因此就可以使得时间复杂度降为$O(n)$。\\
+
+
+\noindent 一个稍困难的例子是，给定二维空间中的点集合S，
+
+\noindent 我们称点$p$为$S$中的maxima，
+
+\noindent 如果在S中没有任何点的$x$坐标以及$y$坐标同时都大于点$p$的$x$坐标与$y$坐标。
+
+\noindent 问题是要把所有maxima找出来。\\
+
+
+\noindent 基于Divide and conquer的技巧，利用x坐标等分成两半分别找出maxima，
+
+\noindent 然后把在子问题中是maxima但是在考虑整体时不是maxima的点删除，
+
+\noindent 如此的时间复杂度可达到$O(n\lg n)$。\\
+
+
+\noindent 使用marriage-before-coquest的技巧，
+
+\noindent 可以把时间复杂度降到$O(n\lg h)$，$h$为maxima的个数。
+
+\noindent 方法是先计算右半边的maxima，
+
+\noindent 然后利用右半边的maxima把左半边中不可能成为全体的maxima的点先删除，
+
+\noindent 最后才计算左半边。\\
+
+
+\noindent 同样的技巧也可以用在convex hull上达到$O(n\lg h)$的时间复杂度。\\
+
+
+\noindent Yu-Han 说道：
+
+\noindent 2014/1/11 at 23:51
+
+\noindent 以convex hull为例子的话，
+
+\noindent 是prune-and-search和marriage before conquest的综合应用。
+
+\noindent 当有了右半边的convex hull的点，要删除左半边不可能为convex hull的点时，
+
+\noindent 需要使用线性规划（利用prune-and-search），
+
+\noindent 或是自己设计一个prune-and-search的方法。
+
+\noindent 所以marriage before conquest和prune-and-search是不同的技巧。\\
+
+
+\noindent 除了这三个例子之外，我也找不太到其它marriage-before-conquest的范例了。 
+
+
+\subsection{Recurrence}
+
+递归分割问题时，当子问题与原问题完全相同，只有数值范围不同，我们称此现象为 recurrence ，再度出现、一再出现之意。
+
+【注： recursion 和 recurrence ，中文都翻译为「递归」，然而两者意义大不相同，读者切莫混淆。】 
+
+
+\subsection{范例：爬楼梯}
+
+先前于递归法章节，已经谈过如何求踏法，而此处要谈如何求踏法数目。
+
+
+\section{Dynamic Programming }
+
+\begin{flushright}
+\textit{资之深，则取之左右逢其原。《孟子》}
+\par\end{flushright}
+
+
+\subsection{Recurrence}
+
+递归分割问题时，当子问题与原问题完全相同，只有数值范围不同，我们称此现象为 recurrence ，再度出现、一再出现之意。
+
+【注： recursion 和 recurrence ，中文都翻译为「递归」，然而两者意义大不相同，读者切莫混淆。】 
+
+
+\subsection{范例：爬楼梯}
+
+先前于递归法章节，已经谈过如何求踏法，而此处要谈如何求踏法数目。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer18}
+\par\end{center}
+
+踏上第五阶，只能从第四阶或从第三阶踏过去。因此「爬到五阶」源自两个子问题：「爬到四阶」与「爬到三阶」。
+
+「爬到五阶」的踏法数目，就是总合「爬到四阶」与「爬到三阶」的踏法数目。写成数学式子是「 $f(5)=f(4)+f(3)$ 」，其中「
+$f(\lyxmathsym{‧})$ 」表示「爬到某阶之踏法数目」。
+
+依样画葫芦，得到「 $f(4)=f(3)+f(2)$ 」、「 $f(3)=f(2)+f(1)$ 」等式子。
+
+「爬到两阶」与「爬到一阶」无法再分割、没有子问题，直接得到「$f(2)=2$ 」、「 $f(1)=1$ 」等式子。
+
+整理成一道简明扼要的递归公式： 
+\[
+f(n)=\begin{cases}
+1 & \mathrm{if\ }n=1\\
+2 & \mathrm{if\ }n=2\\
+f(n-1)+f(n-2) & \mathrm{if\ }3\leq n\leq5
+\end{cases}
+\]
+
+
+爬到任何一阶的踏法数目，都可以藉由这道递归公式求得， $n$ 代入数值、递归计算即可。可以运用「 Companion Matrix
+」或者「 Dynamic Programming 」迅速求得代入结果。
+
+为什么分割问题之后，就容易计算答案呢？因为分割问题时，同时也分类了这个问题的所有可能答案。分类会使得答案的规律变得单纯，于是更容易求得答案。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer19}
+\par\end{center}
+
+
+\subsection{范例：不重复组合（ Combination ）}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer9}
+\par\end{center}
+
+两个子问题的组合数目加起来，就是原问题的组合数目。递归公式就是著名的帕斯卡尔公式（ Pascal's Formula ）：
+\[
+\binom{n}{m}=\begin{cases}
+\binom{n-1}{m-1}+\binom{n-1}{m} & \mathrm{if\ }n>1\ \mathrm{and\ }m>1\ \mathrm{and\ }n>=m\\
+n & \mathrm{if\ }m=1\\
+1 & \mathrm{if\ }n=1
+\end{cases}
+\]
+
+
+
+\subsection{范例：河内塔（ Tower of Hanoi ）}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer12}
+\[
+f(n)=\begin{cases}
+f(n-1)+1+f(n-1) & \mathrm{if\ }n>1\\
+1 & \mathrm{if\ }n=1
+\end{cases}
+\]
+
+\par\end{center}
+
+
+\subsection{Dynamic Programming = Divide and Conquer + Memoization}
+
+动态规划是分治法的延伸。当递归分割出来的问题，一而再、再而三出现，就运用记忆法储存这些问题的答案，避免重复求解，以空间换取时间。
+
+动态规划的过程，就是反复地读取数据、计算数据、储存数据。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DynamicProgramming1}
+\par\end{center}
+
+
+\subsection{Dynamic Programming ≈ State Space Search}
+
+动态规划得模拟成 State Space Search ：「问题」变「状态」，「全部问题」变「状态空间」，「递归公式」变「状态转移函数」。
+
+
+\subsection{用 Dynamic Programming 设计算法时的步骤}
+\begin{enumerate}
+\item 把原问题递归分割成许多更小的问题。（recurrence）
+
+\begin{enumerate}
+\item 子问题与原问题的求解方式皆类似。（optimal sub-structure）
+\item 子问题会一而再、再而三的出现。（overlapping sub-problems）
+\end{enumerate}
+\item 设计计算过程：
+
+\begin{enumerate}
+\item 确认每个问题需要哪些子问题来计算答案。（recurrence）
+\item 确认总共有哪些问题。（state space）
+\item 把问题一一对应到表格。（lookup table）
+\item 决定问题的计算顺序。（computational sequence）
+\item 确认初始值、计算范围。（initial states / boundary）
+\end{enumerate}
+\item 实作，主要有两种方式：
+
+\begin{enumerate}
+\item Top-down
+\item Bottom-up
+\end{enumerate}
+\end{enumerate}
+
+\subsection{范例：爬楼梯}
+
+以先前提过的爬楼梯问题作为范例，说明 DP 的运用方式。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/Recursive7}
+\par\end{center}
+
+
+\subsubsection{recurrence}
+
+\[
+f(n)=\begin{cases}
+1 & \mathrm{if\ }n=1\\
+2 & \mathrm{if\ }n=2\\
+f(n-1)+f(n-2) & \mathrm{if\ }n\geq3
+\end{cases}
+\]
+
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DivideAndConquer18}
+\par\end{center}
+
+
+\subsubsection{state space}
+
+想要计算第五阶的踏法数目。
+
+全部的问题是「爬到一阶」、「爬到二阶」、「爬到三阶」、「爬到四阶」、「爬到五阶」。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DynamicProgramming2}
+\par\end{center}
+
+至于「爬到零阶」、「爬到负一阶」、「爬到负二阶」以及「爬到六阶」、「爬到七阶」没有必要计算。
+
+
+\subsubsection{lookup table}
+
+建立六格的数组，储存五个问题的答案。
+
+表格的第零格不使用，第一格是「爬到一阶」的答案，第二格是「爬到二阶」的答案，以此类推。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DynamicProgramming3}
+\par\end{center}
+
+如果只计算「爬完五阶」，也可以建立三个变量交替使用。
+
+
+\subsubsection{computational sequence}
+
+因为每个问题都依赖「阶数少一阶」、「阶数少二阶」这两个问题，所以必须由阶数小的问题开始计算。
+
+计算顺序是「爬到一阶」、「爬到二阶」、……、「爬到五阶」。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DynamicProgramming4}
+\par\end{center}
+
+
+\subsubsection{initial states / boundary}
+
+最先计算的问题是「爬到一阶」与「爬到二阶」，必须预先将答案填入表格、写入程序代码，才能继续计算其它问题。心算求得「爬到一阶」的答案是
+1 ，「爬到二阶」的答案是 2 。
+
+最后计算的问题是原问题「爬到五阶」。
+
+为了让表格更顺畅、为了让程序代码更漂亮，可以加入「爬到零阶」的答案，对应到表格的第零格。「爬到零阶」的答案，可以运用「爬到一阶」的答案与「爬到两阶」的答案，刻意逆推而得。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DynamicProgramming5}
+\par\end{center}
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/110/11069.html}{11069}\end{shaded}%
+\end{minipage}}
+
+最后可以把初始值、尚待计算的部份、不需计算的部分，统整成一道递归公式：
+
+\[
+f(n)=\begin{cases}
+0 & \mathrm{if\ }n=0\\
+1 & \mathrm{if\ }n=1\\
+1 & \mathrm{if\ }n=2\\
+f(n-1)+f(n-2) & \mathrm{if\ }2\leq n\leq5\\
+0 & \mathrm{if\ }n>5
+\end{cases}
+\]
+
+
+
+\subsection{实作}
+
+直接用递归实作，而不使用内存储存各个问题的答案，是最直接的方式，也是最慢的方式。时间复杂度是 $O(f(n))$ 。问题一而再、再而三的出现，不断呼叫同样的函数求解，效率不彰。刚接触
+DP 的新手常犯这种错误。
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+int f(int n)
+{
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return f(n-1) + f(n-2);
+}
+\end{lstlisting}
+
+
+正确的 DP ，是一边计算，一边将计算出来的数值存入表格，以后便不必重算。这里整理了两种实作方式，各有优缺点：
+
+\noindent %
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+1. Top-down
+
+2. Bottom-up%
+\end{minipage}}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DynamicProgramming6}
+\par\end{center}
 
 \noindent \clearpage{}
 \end{document}
