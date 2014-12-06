@@ -126,7 +126,7 @@
 \subsection{计算机只会算数字}
 
 回过头来，计算机又是什么？计算机是个很潮的中文翻译，不过实际上计算机的原意是「计算机」。计算机的英文叫做 computer ，而计算的英文就叫做
-compute 。 计算机是一台计算机，只会计算、判断、储存数字。又快又准。 程序是一连串计算、判断、储存数字的步骤。 计算机只会处理数字（二进制数）。计算机里的每一个文字、每一种颜色、每一种声音，其实都有相对应的数字。
+compute 。 计算机是一台计算器，只会计算、判断、储存数字。又快又准。 程序是一连串计算、判断、储存数字的步骤。 计算机只会处理数字（二进制数）。计算机里的每一个文字、每一种颜色、每一种声音，其实都有相对应的数字。
 打个比方，我们规定：用 1 代表「一」，用 2 代表「乙」，用 3 代表「人」，……。一个数字对应一个中文字。计算机里面的所有中文字，都依循人为规定，变作了数字。
 再打个比方，「人」这个字，呈现计算机屏幕上是个「人」样。计算机屏幕的画面，是由许多小光点组成的；计算机屏幕上的「人」也是由许多小光点组成的。我们以「人」的左下角为坐标原点，横向为
 X 轴，直向为 Y 轴，那么「人」其实是 (0,1) 、 (1,2) 、 (2,3) 、 ... 这些坐标画上黑点后所形成的。「人」这个字的的形状，在计算机中变作了一连串的数字。
@@ -184,7 +184,7 @@ b ---
 3 --- %
 \end{minipage}}
 
-计算步骤有两种类型，一类是运算，例如数学运算加减乘除、逻辑运算且或非、比较运算大于等于小于。另一类是读写，例如读取某处的数字、储存数字至某处，就跟计算机的
+计算步骤有两种类型，一类是运算，例如数学运算加减乘除、逻辑运算且或非、比较运算大于等于小于。另一类是读写，例如读取某处的数字、储存数字至某处，就跟计算器的
 MR 、 M+ 按键的意义相似。
 
 古人定义算法，规定计算步骤的数量是必须是有限步，不是无限步。用程序语言的术语来说就是：算法不能有无穷循环。
@@ -879,7 +879,7 @@ void print_lowercase()
 
 one-pass 的优点是：程序代码简短、执行时间也短。缺点是：程序代码不易编修。
 
-multi-pass 的优点是：程序代码一目了然，容易编修、测试、除错；程序代码可以包装成为函数，也有机会套用内建函数库。缺点是：需要额外的暂存内存。
+multi-pass 的优点是：程序代码一目了然，容易编修、测试、调试；程序代码可以包装成为函数，也有机会套用内建函数库。缺点是：需要额外的暂存内存。
 
 这两种方式各有利弊。程序员必须自行取舍。 
 
@@ -3346,6 +3346,418 @@ int f(int n)
 \begin{center}
 \includegraphics[scale=0.5]{images/DynamicProgramming6}
 \par\end{center}
+
+
+\subsubsection{Top-down}
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+int table[6];   // 表格，储存全部问题的答案。
+bool solve[6];  // 纪录问题是否已经计算完毕
+
+int f(int n)
+{
+    // [Initial]
+    if (n == 0 || n == 1) return table[n] = 1;
+
+    // [Compute]
+    // 如果已经计算过，就直接读取表格的答案。
+    if (solve[n]) return table[n];
+
+    // 如果不曾计算过，就计算一遍，储存答案。
+    table[n] = f(n-1) + f(n-2); // 将答案存入表格
+    solve[n] = true;            // 已经计算完毕
+    return table[n];
+}
+
+void stairs_climbing()
+{
+    for (int i=0; i<=5; i++)
+        solve[i] = false;
+
+    int n;
+    while (cin >> n && (n >= 0 && n <= 5))
+        cout << "爬到" << n << "阶，" << f(n) << "种踏法";
+}
+\end{lstlisting}
+
+
+\noindent \rule[0.5ex]{0.7\columnwidth}{1pt}
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+int table[6];   // 合并solve跟table，简化程序代码。
+
+int f(int n)
+{
+    // [Initial]
+    if (n == 0 || n == 1) return table[n] = 1;
+
+    // [Compute]
+    // 用 0 代表该问题还未计算答案
+//  if (solve[n]) return table[n];
+    if (table[n]) return table[n];
+    return table[n] = f(n-1) + f(n-2);
+}
+
+void stairs_climbing()
+{
+    for (int i=0; i<=5; i++)
+        table[i] = 0;
+
+    int n;
+    while (cin >> n && (n >= 0 && n <= 5))
+        cout << "爬到" << n << "阶，" << f(n) << "种踏法";
+}
+\end{lstlisting}
+
+
+这个实作方式的好处是不必斤斤计较计算顺序，因为程序代码中的递归结构会迫使最小的问题先被计算。这个实作方式的另一个好处是只计算必要的问题，而不必计算所有可能的问题。
+
+这个实作方式的坏处是程序代码采用递归结构，不断调用函数，执行效率较差。这个实作方式的另一个坏处是无法自由地控制计算顺序，因而无法妥善运用内存，浪费了可回收再利用的内存。 
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/102/10285.html}{10285}
+\protect\href{http://uva.onlinejudge.org/external/104/10446.html}{10446}
+\protect\href{http://uva.onlinejudge.org/external/105/10520.html}{10520}\end{shaded}%
+\end{minipage}}
+
+
+\subsubsection{Bottom-up}
+
+订定一个计算顺序，然后由最小的问题开始计算。特色是程序代码通常只有几个循环。这个实作方式的好处与坏处与前一个方式恰好互补。
+
+首先建立表格。 
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+int table[6];
+\end{lstlisting}
+
+
+\noindent \rule[0.5ex]{0.7\columnwidth}{1pt}
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+int table[5 + 1];
+\end{lstlisting}
+
+
+心算「爬到零阶」的答案、「爬到一阶」的答案，填入表格当中，作为初始值。分别填到表格的第零格、第一格。
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+table[0] = 1;
+table[1] = 1;
+\end{lstlisting}
+
+
+尚待计算的部份就是「爬到两阶」的答案、……、「爬到五阶」的答案。通常是使用循环，按照计算顺序来计算。
+
+计算过程的实作方式，有两种迥异的风格。一种是「往回取值」，是常见的实作方式。 
+
+\begin{lstlisting}[caption={往回取值},language={C++},numbers=left,basicstyle={\ttfamily}]
+int table[6];
+
+void dynamic_programming()
+{
+    // [Initial]
+    table[0] = 1;
+    table[1] = 1;
+
+    // [Compute]
+    for (int i=2; i<=5; i++)
+        table[i] = table[i-1] + table[i-2];
+}
+\end{lstlisting}
+
+
+另一种是「往后补值」，是罕见的实作方式。
+
+\begin{lstlisting}[caption={往后补值},language={C++},numbers=left,basicstyle={\ttfamily}]
+int table[6];
+
+void dynamic_programming()
+{
+    // [Initial]
+    for (int i=0; i<=5; i++) table[i] = 0;
+    table[0] = 1;
+//  table[1] = 1;   // 刚好可以被算到
+
+    // [Compute]
+    for (int i=0; i<=5; i++)
+    {
+        if (i+1 <= 5) table[i+1] += table[i];
+        if (i+2 <= 5) table[i+2] += table[i];
+    }
+}
+\end{lstlisting}
+
+
+计算完毕之后，最后印出答案。
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+void stairs_climbing()
+{
+    dynamic_programming();
+
+    int n;
+    while (cin >> n && (n >= 0 && n <= 5))
+        cout << "爬到" << n << "阶，" << f(n) << "种踏法";
+}
+\end{lstlisting}
+
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/4/495.html}{495}
+\protect\href{http://uva.onlinejudge.org/external/9/900.html}{900}
+\protect\href{http://uva.onlinejudge.org/external/103/10334.html}{10334}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{小结}
+
+第一。先找到原问题和其子问题们之间的关系，写出递归公式。如此一来，便可利用递归公式，用子子问题的答案，求出子问题的答案；用子问题的答案，求出原问题的答案。
+
+第二。确认可能出现的问题全部总共有哪些，这样才能知道要计算哪些问题，才能知道总共花多少时间、多少内存。
+
+第三。有了递归公式之后，就必须安排出一套计算的顺序。大问题的答案，总是以小问题的答案来求得的，所以，小问题的答案是必须先算的，否则大问题的答案从何而来呢？
+
+一个好的安排方式，不但会使程序代码容易撰写，还可重复利用内存空间。
+
+第四。记得先将最小、最先被计算的问题，心算出答案，储存入表格，内建于程序代码之中。一道递归公式必须拥有初始值，才有办法计算其它项。
+
+第五。实作 DP 的程序时，会建立一个表格，在表格存入所有大小问题的答案。安排好每个问题的答案在表格的哪个位置，这样计算时才能知道该在哪里取值。
+
+切勿存取超出表格的元素，产生溢位情形，导致答案算错。计算过程当中，一旦某个问题的答案出错，就会如骨牌效应般一个影响一个，造成很难调试。
+
+
+\subsection{范例：阶乘（ Factorial ）}
+
+$N$阶乘，$N!$ ，$1\times2\times3\times\cdots\times N$ ，1 到 $N$ 的连乘积。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DynamicProgramming7}
+\par\end{center}
+
+$N!$问题依赖 $(N-1)!$ 问题，如此就递归分割问题了。
+
+时间复杂度：总共 $N$ 个问题，每个问题花费 $O(1)$ 时间，总共花费 $O(N)$ 时间。
+
+空间复杂度，有两种情况。
+
+求 $1!$ 到 $N!$ ：总共 $N$ 个问题，用一条 $N$ 格数组储存全部问题的答案，空间复杂度为 $O(N)$
+。
+
+求 $N!$ ：用一个变量累积乘积，空间复杂度为 $O(1)$ 。 
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/6/623.html}{623}
+\protect\href{http://uva.onlinejudge.org/external/5/568.html}{568}
+\protect\href{http://uva.onlinejudge.org/external/102/10220.html}{10220}
+\protect\href{http://uva.onlinejudge.org/external/103/10323.html}{10323}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{范例：帕斯卡尔三角形（ Pascal's Triangle ）}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DynamicProgramming8}
+\par\end{center}
+
+帕斯卡尔三角形左右对称，可以精简掉对称部分。帕斯卡尔三角形逆时针转 45˚ ，视觉上就可以一一对应至表格。
+
+时间复杂度为 $O(N^{2})$ ，空间复杂度为 $O(N^{2})$ 。 
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/3/369.html}{369}
+\protect\href{http://uva.onlinejudge.org/external/4/485.html}{485}
+\protect\href{http://uva.onlinejudge.org/external/105/10564.html}{10564}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{范例}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+Staircase Walk
+
+Largest Empty Rectangle
+
+Maximum Subarray
+
+1D p-Center Problem
+
+Longest Increasing Subsequence
+
+Longest Common Subsequence
+
+Longest Palindrome Substring
+
+0/1 Knapsack Problem\end{shaded}%
+\end{minipage}
+
+
+\subsection{范例： Matrix Chain Multiplication}
+
+矩阵乘法具有结合率。在一连串的矩阵乘法中，可以从中任取两个相邻的矩阵相乘，先行结合成一个新矩阵，不会改变所有矩阵相乘之后的结果。
+
+在一连串的矩阵乘法中，无论从何处开始相乘，计算结果都一样，然而计算时间却有差异。两个矩阵大小为 $a\times b$ 及 $b\times c$
+，其相乘需要 $O(a*b*c)$ 的时间（当然还可以更快，但是此处不讨论），那么一连串的矩阵乘法，需要多少时间呢？
+
+从最后一次相乘的角度来看，原来的一连串矩阵，可以从最后一次相乘的地方分开，将原问题化作两串矩阵相乘。「Exponentiation」也有点类似，也是化作两个数字相乘；但是在本问题中，并非固定地对半分，而是同时考虑所有可能的分法。 
+
+\noindent %
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+$f(i,k)=\min\{f(i,j)+f(j+1,k)+r[i]*c[j]*c[k]\}\ i\le j<k$\\
+
+
+$f(i,k)$：从第$i$个矩阵乘到第$k$个矩阵，最少的相乘次数。
+
+$r[i]$：第$i$个矩阵的row数目。
+
+$c[i]$：第$i$个矩阵的column数目。 %
+\end{minipage}}
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+int f[100][100];
+int r[100], c[100];
+
+void matrix_chain_multiplication()
+{
+    memset(array, 0x7f, sizeof(array));
+    for (int i=0; i<N; ++i)
+        array[i][i] = 0;
+
+    for (int l=1; l<N; ++l)
+        for (int i=0; i+l<N; ++i)
+        {
+            int k = i + l;
+            for (int j=i; j<k; ++j)
+                f[i][k] = min(f[i][k], f[i][j] + f[j+1][k] + r[i] * c[j] * c[k]);
+        }
+}
+\end{lstlisting}
+
+
+计算顺序也可以调整成 online 版本。
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+    for (int l=1; l<N; ++l)
+        for (int i=0; i+l<N; ++i)
+            for (int j=k-1; j>=i; --j)
+//          for (int j=i; j<k; ++j)
+                f[i][k] = min(f[i][k], f[i][j] + f[j+1][k] + r[i] * c[j] * c[k]);
+\end{lstlisting}
+
+
+当然也可以印出矩阵相乘的顺序。另外用一个数组，纪录最后一次的相乘位置就行了。
+
+\noindent %
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+同是纪录区间的动态规划问题：
+
+Matrix Chain Multiplication
+
+Optimal Binary Search Tree
+
+\href{http://www.csie.ntnu.edu.tw/~u91029/Compression.html}{Optimal Alphabetic Code Tree}
+
+\href{http://www.csie.ntnu.edu.tw/~u91029/Triangulation2.html}{Minimum Weight Triangulation of Convex Polygon}
+
+\href{http://www.csie.ntnu.edu.tw/~u91029/Language.html}{Context-free Language: Cocke-Younger-Kasami Algorithm }%
+\end{minipage}}
+
+现今已能在 $O(N\log N)$ 时间内解决 Matrix Chain Multiplication ： http://historical.ncstrl.org/litesite-data/stan/CS-TR-81-875.pdf
+。
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/3/348.html}{348}
+\protect\href{http://uva.onlinejudge.org/external/4/442.html}{442}
+ICPC \protect\href{http://livearchive.onlinejudge.org/external/66/6669.pdf}{6669}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{范例：文章换行}
+
+一大段的英文段落，适当的将文章换行，让文字不超过纸张边界，尽量美化排版，求得最佳的留白方式。
+
+穷举行数，然后穷举一行挤入多少字数。 
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/7/709.html}{709}
+\protect\href{http://uva.onlinejudge.org/external/8/848.html}{848}
+\protect\href{http://uva.onlinejudge.org/external/4/400.html}{400}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{范例： Longest Increasing Subsequence}
+
+把解答编入状态之中。
+
+详见「 Longest Increasing Subsequence 」倒数两篇。 
+
+
+\subsection{范例：鸡蛋耐力测试}
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/109/10934.html}{10934}
+\protect\href{http://uva.onlinejudge.org/external/8/882.html}{882}
+ICPC \protect\href{http://livearchive.onlinejudge.org/external/45/4554.pdf}{4554}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{范例：二进制数}
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+ICPC \protect\href{http://livearchive.onlinejudge.org/external/48/4833.pdf}{4833}
+\protect\href{http://livearchive.onlinejudge.org/external/51/5101.pdf}{5101}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{范例：节省内存}
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+ICPC \protect\href{http://livearchive.onlinejudge.org/external/64/6435.pdf}{6435}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{Dynamic Programming 的递归关系是 DAG}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/DynamicProgramming9}
+\par\end{center}
+
+「 DAG 」是指图论的「有向无环图」。
+
+DP 的各个子问题，就是 DAG 的每个点，一个子问题对应一个点。
+
+DP 的计算顺序，就是 DAG 的拓扑顺序，一种计算顺序对应一种拓扑顺序。
+
+DP 的递归关系不会循环──既然不会循环，显然是 DAG 。
+
+各种 DP 经典问题，诸如「 Staircase Walk 」、「 Longest Increasing Subsequence 」，各位读者可以试着改用
+DAG 的观点来看待这些问题，试着改用 Graph Traversal 的观点设计算法。
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+ICPC \protect\href{http://livearchive.onlinejudge.org/external/51/5104.pdf}{5104}\end{shaded}%
+\end{minipage}}
 
 \noindent \clearpage{}
 \end{document}
