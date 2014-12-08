@@ -3580,12 +3580,201 @@ UVa \protect\href{http://uva.onlinejudge.org/external/3/369.html}{369}
 \end{minipage}}
 
 
+\subsection{Staircase Walk}
+
+
+\subsubsection{Staircase Walk}
+
+一个方格棋盘，从左上角走到右下角，每次只能往右走一格或者往下走一格。请问有几种走法？
+
+\begin{center}
+\includegraphics[scale=0.5]{images/StaircaseWalk1}
+\par\end{center}
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/105/10599.html}{10599}
+\protect\href{http://uva.onlinejudge.org/external/8/825.html}{825}
+\protect\href{http://uva.onlinejudge.org/external/9/926.html}{926}
+ICPC \protect\href{http://livearchive.onlinejudge.org/external/47/4787.pdf}{4787}\end{shaded}%
+\end{minipage}}
+
+
+\subsubsection{Recurrence}
+
+对于某个位置的方格来说，只可能「从左走来」或者「从上走来」，得到递归公式：
+
+\noindent %
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+$count(i,j)=\begin{cases}
+0 & \mathrm{if\ }i<0\ j<0\\
+1 & \mathrm{if\ }i=0\\
+1 & \mathrm{if\ }j=0\\
+count(i-1,j)+count(i,j-1) & \mathrm{if\ }0<i<8\ \mathrm{and\ }0<j<8\\
+0 & \mathrm{if\ }i\geq8\ j\geq8
+\end{cases}$\\
+
+
+$count(i,j)$：从格子 (0, 0) 走到格子 (i, j) 的走法数目。%
+\end{minipage}}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/StaircaseWalk2}
+\par\end{center}
+
+若了解递归关系，就不必强记递归公式。若了解图片意义，就不必强记数学符号。
+
+
+\subsubsection{复杂度}
+
+时间复杂度分析：令 $X$ 和 $Y$ 分别是棋盘的长和宽。计算一个问题需要 $O(1)$ 时间（计算两个子问题的时间）。总共
+$X*Y$ 个问题，所以计算所有问题需要 $O(XY)$ 时间。
+
+空间复杂度分析：总共 $X*Y$ 个问题，所以需要 $O(XY)$ 空间，简单来说就是二维数组啦！如果不需要储存所有问题的答案，只想要得到其中一个特定问题的答案，那只需要一维数组就够了，也就是
+$O(\min(X,Y))$ 空间。 
+
+
+\subsubsection{程序代码}
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+const int X = 8, Y = 8;
+int count[X][Y];
+
+void staircase_walk()
+{
+    // [Initial]
+    for (int i=0; i<X; i++) count[i][0] = 1;
+    for (int j=0; j<Y; j++) count[0][j] = 1;
+
+    // [Compute]
+    for (int i=1; i<X; i++)
+        for (int j=1; j<Y; j++)
+            count[i][j] = count[i-1][j] + count[i][j-1];
+
+    // 输出结果
+    cout << "由(0,0)走到(7,7)有" << count[7][7] << 种走法;
+//  cout << "由(0,0)走到(7,7)有" << count[X-1][Y-1] << 种走法;
+
+    int x, y;
+    while (cin >> x >> y)
+        cout << "由(0,0)走到(x,y)有" << count[x][y] << 种走法;
+}
+\end{lstlisting}
+
+
+
+\subsubsection{节省内存空间}
+
+如果只打算求出一个问题，那么只需要储存最近算出来的问题答案，让计算过程可以顺利进行就可以了。
+
+使用两条数组，就足够储存最近算出来的问题答案、避免 count{[}i-1{]}{[}j{]} 超出数组范围。这个实作技巧在中文网络上称作「滚动数组」，「数组」是数组的意思，「滚动」也就是两条数组轮替使用的意思。
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+const int X = 8, Y = 8;
+int count[2][Y];    // 两个数组，储存最近算出来的问题答案。
+
+void staircase_walk()
+{
+    // [Initial]
+    for (int j=0; j<Y; ++j) count[0][j] = 1;
+
+    // [Compute]
+    for (int i=1; i<X; i++)
+        for (int j=1; j<Y; j++)
+            // 只是多了 mod 2，
+            // 外观看起来就像两个数组轮替使用。
+            count[i % 2][j] = count[(i-1) % 2][j] + count[i % 2][j-1];
+
+    // 输出结果
+    cout << "由(0,0)走到(7,7)有" << count[7 % 2][7] << 种走法;
+//  cout << "由(0,0)走到(7,7)有" << count[(X-1) % 2][Y-1] << 种走法;
+}
+\end{lstlisting}
+
+
+不过事实上，一个数组就够了。也不能再少了。
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+const int X = 8, Y = 8;
+int count[Y];   // 一个数组就够了
+
+void staircase_walk()
+{
+    // [Initial]
+    for (int j=0; j<Y; ++j) count[j] = 1;
+
+    // [Compute]
+    for (int i=1; i<X; i++)
+        for (int j=1; j<Y; j++)
+            count[j] += count[j-1];
+
+    // 输出结果
+    cout << "由(0,0)走到(7,7)有" << count[7] << 种走法;
+//  cout << "由(0,0)走到(7,7)有" << count[Y-1] << 种走法;
+}
+\end{lstlisting}
+
+
+\noindent \rule[0.5ex]{0.7\columnwidth}{1pt}
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+const int X = 8, Y = 8;
+int count[Y];   // 一个数组就够了
+
+void staircase_walk()
+{
+    // [Initial]
+    count[0] = 1;   // 部分步骤移到[Compute]
+
+    // [Compute]
+    for (int i=0; i<X; i++) // 从零开始！
+        for (int j=1; j<Y; j++)
+            count[j] += count[j-1];
+
+    // 输出结果
+    cout << "由(0,0)走到(7,7)有" << count[7] << 种走法;
+//  cout << "由(0,0)走到(7,7)有" << count[Y-1] << 种走法;
+}
+\end{lstlisting}
+
+
+
+\subsubsection{往其它方向走的话？}
+
+如果某些格子上有障碍物呢？其实也很简单，如果某格有障碍物，在计算过程中，遇到障碍物就把此格的 $c(i,j)$ 设为零就可以了。
+
+如果也可以往右下斜角走呢？那么递归公式就再修改一下，多加一项 $c(i-1,j-1$) 就行了。
+
+如果可以往上下左右走呢？那么就可以不断绕圈子，走法就成了无限多种了。写成递归公式的话，就会产生无穷递归，永远也不会结束。
+
+如果也可以往右上斜角走呢？因为不会产生无穷递归，所以这是可以解的！ 
+
+
+\subsubsection{双向都可以递归}
+
+对某个位置的方格来说，只可能「向右走出」或者「向下走出」，如此得到另一道递归公式。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/StaircaseWalk3}
+\par\end{center}
+
+
+\subsubsection{一般公式解}
+
+除了递归公式之外，其实也有一般公式：%
+\footnote{http://mathworld.wolfram.com/StaircaseWalk.html%
+}
+\[
+\binom{m+n}{m}=\frac{(m+n)!}{m!n!}
+\]
+
+
+
 \subsection{范例}
 
 \begin{minipage}[t]{1\columnwidth}%
 \begin{shaded}%
-Staircase Walk
-
 Largest Empty Rectangle
 
 Maximum Subarray
