@@ -3771,12 +3771,567 @@ void staircase_walk()
 
 
 
+\subsection{Largest Empty Interval}
+
+
+\subsubsection{问题描述（离散版本）}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/LargestEmptyInterval1}
+\par\end{center}
+
+一个数组，有些格子已被放上障碍物。最长的、连续的空白格子在哪里？
+
+
+\subsubsection{Recurrence}
+
+\noindent %
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+$length(i)=\begin{cases}
+0 & \mathrm{if\ }i<0\\
+0 & \mathrm{if\ }i=0\ \mathrm{and\ }array[i]=0\\
+1 & \mathrm{if\ }i=0\ \mathrm{and\ }array[i]=1\\
+0 & \mathrm{if\ }i>0\ \mathrm{and\ }array[i]=0\\
+length(i-1)+1 & \mathrm{if\ }i>0\ \mathrm{and\ }array[i]=1
+\end{cases}$\\
+
+
+$length(i)$：以第$i$格作为最右端的连续空白的长度。
+
+$array[i]$：障碍物为0，空白为1。%
+\end{minipage}}
+
+
+\subsubsection{复杂度}
+
+时间复杂度为 $O(N)$ ，空间复杂度为 $O(N)$ ， $N$ 为数组长度。
+
+如果只想计算一个特定问题的答案，那么空间复杂度可以精简成 $O(1)$ ，这个部份就不多提了，交给各位来处理。 
+
+
+\subsubsection{程序代码：求出最长空白的长度}
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+int array[10] =
+{
+    0, 1, 1, 1, 0,
+    1, 1, 0, 1, 1
+};
+
+int length[10];
+
+void largest_empty_interval()
+{
+    // initial
+    if (array[0] == 0)
+        length[0] = 0;
+    else
+        length[0] = 1;
+
+    // compute
+    for (int i=1; i<10; i++)
+        if (array[i] == 0)
+            length[i] = 0;
+        else
+            length[i] = length[i-1] + 1;
+
+    // 输出结果
+    int max_length = 0;
+    for (int i=0; i<10; i++)
+        if (length[i] > max_length)
+            max_length = length[i];
+
+    cout << "最长空白的长度是" << max_length;
+}
+\end{lstlisting}
+
+
+
+\subsubsection{程序代码：求出最长空白的长度}
+
+为了让程序代码更清爽，这里把 array{[}{]} 、 length{[}{]} 里面的数值都往右移动一格，如此就可以省略掉第零格的判断式，也避免了
+length{[}{]} 会溢出边界。
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+int array[10 + 1] =
+{
+    0,
+    0, 1, 1, 1, 0,
+    1, 1, 0, 1, 1
+};
+
+int length[10 + 1];
+
+void largest_empty_interval()
+{
+    // initial
+    length[0] = 0;
+
+    // compute
+    for (int i=1; i<=10; i++)
+        if (array[i] == 0)
+            length[i] = 0;
+        else
+            length[i] = length[i-1] + 1;
+
+    // 输出结果
+    ...
+}
+\end{lstlisting}
+
+
+为了让程序代码更清爽，这里也把 length{[}{]} 都初始化为 0 ，如此就不必特别处理 array{[}i{]} == 0
+的情况了，相当巧妙。
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+int array[10 + 1] =
+{
+    0,
+    0, 1, 1, 1, 0,
+    1, 1, 0, 1, 1
+};
+
+int length[10 + 1];
+
+void largest_empty_interval()
+{
+    // initial
+    memset(length, 0, sizeof(length));
+
+    // compute
+    for (int i=1; i<=10; i++)
+        if (array[i] == 1)
+            length[i] = length[i-1] + 1;
+
+    // 输出结果
+    ...
+}
+\end{lstlisting}
+
+
+这两个技巧是经常使用的的实作技巧，不仅简化了程序代码的结构，也增加了程序的效率。一定要学会！
+
+
+\subsubsection{程序代码：求出最长空白的位置}
+
+求出最长空白的长度之后，在最后加上一段程序代码就可以了。当然可以再改进，就交给各位了。
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+void largest_empty_interval()
+{
+    ......
+
+    // 求出所有最长空白的位置
+    for (int i=1; i<=10; i++)   // 从1开始
+        if (length[i] == max_length)
+        {
+            // 记得减回1
+            cout << "有一个最长空白的位置是"
+                << "从" << (i - max_length + 1) - 1
+                << "到" << (i                 ) - 1;
+        }
+}
+\end{lstlisting}
+
+
+
+\subsubsection{程序代码：求出其中一个最长空白的位置}
+
+也有人会一边计算表格，一边纪录最大值。这种写法也是很好的，不过只能求出其中一个最长空白的位置。
+
+如果只需要求出随便一种最长空白的位置，那么这种写法就非常适合。 
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+void largest_empty_interval()
+{
+    // initial
+    memset(length, 0, sizeof(length));
+
+    // compute
+    int max_length = 0;
+    int index = 0;
+
+    for (int i=1; i<=10; i++)
+        if (array[i] == 1)
+        {
+            length[i] = length[i-1] + 1;
+
+            if (length[i] > max_length)
+            {
+                max_length = length[i];
+                index = i;
+            }
+        }
+
+    // 输出结果
+    cout << "最长空白的长度是" << max_length;
+    cout << "有一个最长空白的位置是"
+        << "从" << (index - max_length + 1) - 1
+        << "到" << (index                 ) - 1;
+}
+\end{lstlisting}
+
+
+
+\subsection{Largest Empty Rectangle}
+
+
+\subsubsection{问题描述（离散版本）}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/LargestEmptyRectangle12}
+\par\end{center}
+
+一张方格纸，有许多格子填上了黑色。请找出不包含黑格子的矩形，并且令矩形面积尽量大。
+
+矩形的顶点，可以直接想做是一整个格子，而不是想做直线与横线的交叉点。
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/100/10074.html}{10074}
+\protect\href{http://uva.onlinejudge.org/external/105/10502.html}{10502}
+\protect\href{http://uva.onlinejudge.org/external/106/10667.html}{10667}\end{shaded}%
+\end{minipage}}
+
+
+\subsubsection{如果使用穷举法}
+
+最简单的方法就是用穷举法。矩形总共四个顶点，只要穷举所有可能的顶点位置，就可以找出答案来。纸的长宽为 $H$ 和 $W$ 的话，总共
+$H*W$ 个位置可以放上顶点；要穷举所有矩形，时间复杂度就是 $O((H*W)^{4})$ 。另外还要确定矩形内部有没有包含黑格子，时间复杂度就变成了
+$O((H*W)^{5})$。
+
+要确定一个矩形的大小和位置，其实只要对角线的两个顶点就够了；要穷举所有矩形，时间复杂度是 $O((H*W)^{2})$ 。确定矩形内部有没有包含黑格子，就是
+$O((H*W)^{3})$ 。
+
+要确定一个矩形的大小和位置，也可以利用矩形左上角的顶点、长、宽；要穷举所有矩形，时间复杂度是 $O((H*W)^{2})$ 。确定矩形内部有没有包含黑格子，就是
+$O((H*W)^{3})$ 。
+
+谈了一堆简单的做法后，接着来试试 Dynamic Programming 吧！ 
+
+
+\subsubsection{尝试切成条状， Divide and Conquer}
+
+因为原来的纸张又大又复杂，计算面积非常麻烦，所以我们可以试着把纸张切成小块小块，逐一处理。这里将纸张切成横条状（这个想法跟积分运算的道理是相同的），并套用上一篇文章所提到的
+Largest Empty Interval 来计算每一条横条的面积；接着将所有横条合并起来，便能求出总面积。
+
+将纸张切成横条状，此即 Divide ；每个横条用 Largest Empty Interval 来计算面积，此即 Conquer
+；将所有横条合并，此即 Combine 。接着来看看要怎么找出 Largest Empty Rectangle 吧！ 
+
+
+\subsubsection{算法}
+
+首先将纸张切成横条状，针对每一横条，找出其中每个点往左可延伸的长度，即是在寻找 Largest Empty Interval 。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/LargestEmptyRectangle14}
+\par\end{center}
+
+对纸张上的每个位置，都尝试作为矩形右下角的顶点位置（穷举所有矩形右下角的位置）。固定矩形右下角的顶点后，观察该处以上的每个横条（穷举所有矩形高度），往左可延伸的长度，便可以求得最大矩形面积。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/LargestEmptyRectangle15}
+\par\end{center}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/LargestEmptyRectangle16}
+\par\end{center}
+
+
+\subsubsection{程序代码}
+
+为了让边界计算不会溢位，于是将纸张的外面多围一圈。这是实作二维地图时很常用的方法。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/LargestEmptyRectangle13}
+\par\end{center}
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+bool array[10+2][10+2]; // 空敞处为true，有障碍物则为false
+\end{lstlisting}
+
+
+
+\subsubsection{程序代码}
+
+先设计出计算一个横条的程序代码──计算 Largest Empty Interval ，运用了 DP 。（这段程序代码在计算 width
+时，每一格都会覆盖掉而不受旧值影响，故重算时不必重新初始化。） 
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+int width[10+2];
+// 一个横条上，每个位置往左可延伸的长度
+// 如width[2]就是第二个位置往左可延伸的长度
+// 初始化为零
+
+void only_one_bar()
+{
+    // 计算每个点往左可延伸的长度
+    for (int j=1; j<=10; ++j)
+        if (position j have blockade)
+            // 有障碍物，长度为0。
+            width[j] = 0;
+        else
+            // 没障碍物，长度增加。
+            width[j] = width[j-1] + 1;
+}
+\end{lstlisting}
+
+
+补足程序代码，计算所有横条。
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+bool array[10+2][10+2];
+int width[10+2][10+2];
+
+void all_bars()
+{
+    for (int i=1; i<=10; ++i)   // 计算每个横条
+        for (int j=1; j<=10; ++j)
+            if (array[i][j])
+                width[i][j] = width[i][j-1] + 1;
+            else
+                width[i][j] = 0;
+}
+\end{lstlisting}
+
+
+
+\subsubsection{程序代码}
+
+对纸张上的每个位置，都尝试作为矩形右下角的顶点位置。固定矩形右下角的顶点后，观察该处以上的每个横条，往左可延伸的长度，便可以求得最大矩形面积。
+先设计出计算一个位置的程序代码。 
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+int only_one_point(int i, int j)
+{
+    int area = 0;
+    int w = 1e9;
+
+    for (int h=1; i-h+1 >= 0; ++h)
+    {
+        // 已经窄到不能形成矩形了
+        if (width[i-h+1][j] == 0) break;
+
+        w = min(w, width[i-h+1][j]);
+        area = max(area, w*h);
+    }
+
+    return area;
+}
+\end{lstlisting}
+
+
+判断矩形太窄的情形。
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+// (i,j)是矩形右下角顶点的位置
+int only_one_point(int i, int j)
+{
+    int area = 0;   // 最大矩形面积，先设为最小值。
+    int w = 1e9;    // 矩形的宽，设为无限大。
+
+    // 穷举矩形的高
+    for (int h=1; i-h+1 >= 0; ++h)
+    {
+        // 求出最窄处的宽度
+        w = min(w, width[i-h+1][j]);
+        // 最大矩形面积
+        area = max(area, w*h);
+    }
+
+    return area;
+}
+\end{lstlisting}
+
+
+补足程序代码，穷举纸张上所有位置。
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+bool array[10+2][10+2];
+int width[10+2][10+2];
+
+int largest_empty_rectangle()
+{
+    /* 计算所有横条当中，每个位置往左可延伸的长度。 */
+
+    for (int i=1; i<=10; ++i)
+        for (int j=1; j<=10; ++j)
+            if (array[i][j])
+                width[i][j] = width[i][j-1] + 1;
+            else
+                width[i][j] = 0;
+
+    /* 计算每个位置当作矩形右下角顶点时的最大矩形面积。 */
+
+    // 最大矩形面积，初始化为最小值
+    int area = 0;
+
+    // 穷举矩形右下角顶点的位置
+    for (int i=1; i<=10; ++i)
+        for (int j=1; j<=10; ++j)
+        {
+            int w = 1e9;
+            for (int h=1; i-h+1 >= 0; ++h)
+            {
+                if (width[i-h+1][j] == 0) break;
+
+                w = min(w, width[i-h+1][j]);
+                area = max(area, w*h);
+            }
+        }
+
+    return area;
+}
+\end{lstlisting}
+
+
+
+\subsubsection{复杂度}
+
+时间复杂度分析：首先计算了每个横条的 Largest Empty Interval ，接着穷举矩形的右下角顶点位置，又穷举了矩形的各种高度，算出最大矩形面积。时间复杂度是
+$O((H*W)*H)$ 。
+
+空间复杂度分析：储存全部问题的答案，空间复杂度是 $O(H*W)$ 。只想计算一个特定问题的答案，空间复杂度当然可以精简，这里就不多提了。
+
+计算的方向是可以改变的。可以改为切直条，可以改为穷举矩形右上角顶点，道理都一样。 
+
+
+\subsubsection{更好的方法}
+
+前面介绍的方法用了很多穷举，也重复计算了很多地方。所以，还可以更快。
+
+这个方法是穷举纸张上每一个位置，每个位置都去计算以该点为长方形底部，往上延伸到底后，再往左右延伸到底的面积。 
+
+\begin{center}
+\includegraphics[scale=0.5]{images/LargestEmptyRectangle21}
+\par\end{center}
+
+如果穷举一个横条上的所有位置，便可以得到以该横条为长方形底部的 Largest Empty Rectangle 。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/LargestEmptyRectangle22}\includegraphics[scale=0.5]{images/LargestEmptyRectangle23}
+\par\end{center}
+
+所以，只要穷举纸张上每个位置，就可以算出 Largest Empty Rectangle 了。
+
+
+\subsubsection{讨论}
+
+之前只将长方形往左延伸，故要穷举所有高度。现在改为同时往左右延伸，由于这种延伸方式可得到最大的矩形，便不必穷举所有高度。
+
+
+\subsubsection{时间复杂度}
+
+时间复杂度是 $O(H*W)$ 。
+
+
+\subsubsection{程序代码： Largest Empty Rectangle 的面积}
+
+计算过程满繁复的。大抵上和上一篇的方式差不多，我有点懒的说明，所以直接给程序代码吧。（懒散是不好的行为，请勿模仿。） 
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
+bool array[10+2][10+2];
+
+int wl[10+2];   // 每一条横条往左可延伸的长度
+int wr[10+2];   // 每一条横条往右可延伸的长度
+
+int h[10+2];    // 矩形往上可延伸的高度
+int l[10+2];    // 矩形往上延伸到底后，往左可延伸的距离。
+int r[10+2];    // 矩形往上延伸到底后，往右可延伸的距离。
+
+int largest_empty_rectangle()
+{
+    // 最大矩形面积，初始化为最小值
+    int max_area = 0;
+
+    // 以每一个横条当作长方形底部
+    for (int i=1; i<=10; ++i)
+    {
+        // 往左可延伸的长度
+        for (int j=1; j<=10; ++j)
+            if (array[i][j])
+                wl[j] = wl[j-1] + 1;
+            else
+                wl[j] = 0;
+
+        // 往右可延伸的长度
+        for (int j=10; j>=1; --j)
+            if (array[i][j])
+                wr[j] = wr[j+1] + 1;
+            else
+                wr[j] = 0;
+
+        // 矩形往上可延伸的高度
+        for (int j=1; j<=10; ++j)
+            if (array[i][j])
+                h[j] = h[j] + 1;
+            else
+                h[j] = 0;
+
+        // 矩形往上延伸到底后，往左可延伸的距离。
+        for (int j=1; j<=10; ++j)
+            if (l[j] == 0)
+                l[j] = wl[j];
+            else
+                l[j] = min(wl[j], l[j]);
+
+        // 矩形往上延伸到底后，往右可延伸的距离。
+        for (int j=1; j<=10; ++j)
+            if (r[j] == 0)
+                r[j] = wr[j];
+            else
+                r[j] = min(wr[j], r[j]);
+
+        // 计算 Largest Empty Rectangle 并纪录之
+        for (int j=1; j<=10; ++j)
+            max_area = max(max_area, (l[j] + r[j] - 1) * h[j]);
+    }
+
+    return max_area;
+}
+\end{lstlisting}
+
+
+
+\subsubsection{程序代码： Largest Empty Rectangle 的位置}
+
+每当产生最大值之后，就看看此时长方形往上、往左、往右可延伸的距离，就能推敲出最大的长方形的位置。不过这种方式只能找出其中一个长方形的位置。 
+
+【待补程序代码】 
+
+
+\subsubsection{最好的方法}
+
+最简洁的做法，是利用 stack ，宛如判断括号对称一般，将长方形的左右两边线找出来。特别要小心的地方，是当 stack 的元素全部弹出之后，之后出现的右边线还是有用处的，不能把它想做是孤单的右括号。时间复杂度是
+$O(H*W)$ 。 
+
+\noindent %
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+1. 切成直条。预先用DP计算每一条直线的Empty Interval高度。
+
+2. 穷举每一个横条，作为长方形的底线，并利用stack算出最大矩形。 %
+\end{minipage}}
+
+演练其中一段过程：
+
+
 \subsection{范例}
 
+\noindent %
 \begin{minipage}[t]{1\columnwidth}%
 \begin{shaded}%
-Largest Empty Rectangle
-
 Maximum Subarray
 
 1D p-Center Problem
