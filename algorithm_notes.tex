@@ -9,6 +9,7 @@
 \usepackage{fancybox}
 \usepackage{calc}
 \usepackage{framed}
+\usepackage{url}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[unicode=true,
@@ -49,7 +50,7 @@
 \title{算法笔记}
 
 
-\author{http://www.csie.ntnu.edu.tw/}
+\author{\url{http://www.csie.ntnu.edu.tw/}}
 
 \maketitle
 
@@ -95,7 +96,7 @@
 
 站长家庭经济状况不佳，日子过得清澹。如果每个月有稳定薪资，就不必烦恼经济问题──然而没有人提供编写算法笔记的工作，站长必须常常分神去从事其它工作。
 
-理想的方式，是由政府或富人，每月固定资助新台币 35000 元做为薪资，让站长可以全心投入算法笔记。愿意资助的朋友，请来信 algorithm.notes@gmail.com
+理想的方式，是由政府或富人，每月固定资助新台币 35000 元做为薪资，让站长可以全心投入算法笔记。愿意资助的朋友，请来信 \url{algorithm.notes@gmail.com}
 。 
 
 站长的眼睛已经渐渐好转，现在可以长时间使用计算机，不过写程序的话还是太吃力了。因此麻烦大家别再推荐程序开发的工作了！ 
@@ -262,10 +263,11 @@ int gcd(int a, int b) {
         \EndFor
     \EndFor
 \EndProcedure
-\end{algorithmic}%
-\begin{minipage}[t]{1\columnwidth}%
-\begin{shaded}%
-\begin{algorithmic}[1]
+\end{algorithmic}
+
+\noindent \rule[0.5ex]{0.7\columnwidth}{1pt}
+
+\noindent \begin{algorithmic}[1]
 \Procedure{BubbleSort}{$A,n$}
     \For{$i\gets 0, n-1$}\Comment{$n$}
         \For{$j\gets 0, n-i-1$}\Comment{$\frac{n(n-1)}{2}$}
@@ -277,8 +279,7 @@ int gcd(int a, int b) {
         \EndFor
     \EndFor
 \EndProcedure
-\end{algorithmic}\end{shaded}%
-\end{minipage}
+\end{algorithmic}
 
 $\begin{aligned}total & =n+\frac{5n(n-1)}{2}\\
  & =n+2.5n^{2}-2.5n\\
@@ -2999,9 +3000,9 @@ UVa \protect\href{http://uva.onlinejudge.org/external/100/10077.html}{10077}\end
 \includegraphics[scale=0.5]{images/DivideAndConquer16}
 \par\end{center}
 
-采用分治法。两枚硬币放在天平两端秤重，当天平平衡，表示这两枚硬币都是真币。接着只剩下 N-2 枚硬币要寻找假币──问题递归缩小了！
+采用分治法。两枚硬币放在天平两端秤重，当天平平衡，表示这两枚硬币都是真币。接着只剩下 $N-2$ 枚硬币要寻找假币──问题递归缩小了！
 
-剩下 N-2 枚，太多了一点。一次取多一点硬币，同时放在天平两端秤，问题就能缩小更多了！
+剩下 $N-2$ 枚，太多了一点。一次取多一点硬币，同时放在天平两端秤，问题就能缩小更多了！
 
 把所有硬币平均分成三份，取两份放在天平两端秤重。当天平平衡，表示剩下的一份含有假币，问题一次便缩小为 1/3 。当天平倾斜，表示比较轻的一份含有假币，问题一次便缩小为
 1/3 。 
@@ -3025,7 +3026,7 @@ UVa \protect\href{http://uva.onlinejudge.org/external/100/10077.html}{10077}\end
 \noindent 在做Divide and conquer中，递归求解的部份解答可以用来加速剩下的计算。\\
 
 
-\noindent 一个简单的例子是 http://www.geeksforgeeks.org/sorted-linked-list-to-balanced-bst/
+\noindent 一个简单的例子是 \url{http://www.geeksforgeeks.org/sorted-linked-list-to-balanced-bst/}
 把已排序的单向链接串行转成平衡的二元搜索树。\\
 
 
@@ -3038,11 +3039,11 @@ UVa \protect\href{http://uva.onlinejudge.org/external/100/10077.html}{10077}\end
 \noindent 因此就可以使得时间复杂度降为$O(n)$。\\
 
 
-\noindent 一个稍困难的例子是，给定二维空间中的点集合S，
+\noindent 一个稍困难的例子是，给定二维空间中的点集合$S$，
 
 \noindent 我们称点$p$为$S$中的maxima，
 
-\noindent 如果在S中没有任何点的$x$坐标以及$y$坐标同时都大于点$p$的$x$坐标与$y$坐标。
+\noindent 如果在$S$中没有任何点的$x$坐标以及$y$坐标同时都大于点$p$的$x$坐标与$y$坐标。
 
 \noindent 问题是要把所有maxima找出来。\\
 
@@ -3668,7 +3669,7 @@ void staircase_walk()
 
 如果只打算求出一个问题，那么只需要储存最近算出来的问题答案，让计算过程可以顺利进行就可以了。
 
-使用两条数组，就足够储存最近算出来的问题答案、避免 count{[}i-1{]}{[}j{]} 超出数组范围。这个实作技巧在中文网络上称作「滚动数组」，「数组」是数组的意思，「滚动」也就是两条数组轮替使用的意思。
+使用两条数组，就足够储存最近算出来的问题答案、避免 \texttt{count{[}i-1{]}{[}j{]}} 超出数组范围。这个实作技巧在中文网络上称作「滚动数组」，「数组」是数组的意思，「滚动」也就是两条数组轮替使用的意思。
 
 \begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
 const int X = 8, Y = 8;
@@ -3763,7 +3764,7 @@ void staircase_walk()
 \subsubsection{一般公式解}
 
 除了递归公式之外，其实也有一般公式：%
-\footnote{http://mathworld.wolfram.com/StaircaseWalk.html%
+\footnote{\url{http://mathworld.wolfram.com/StaircaseWalk.html}%
 }
 \[
 \binom{m+n}{m}=\frac{(m+n)!}{m!n!}
@@ -3850,8 +3851,8 @@ void largest_empty_interval()
 
 \subsubsection{程序代码：求出最长空白的长度}
 
-为了让程序代码更清爽，这里把 array{[}{]} 、 length{[}{]} 里面的数值都往右移动一格，如此就可以省略掉第零格的判断式，也避免了
-length{[}{]} 会溢出边界。
+为了让程序代码更清爽，这里把 \texttt{array{[}{]}} 、 \texttt{length{[}{]}} 里面的数值都往右移动一格，如此就可以省略掉第零格的判断式，也避免了
+\texttt{length{[}{]}} 会溢出边界。
 
 \noindent 
 \begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
@@ -3882,8 +3883,8 @@ void largest_empty_interval()
 \end{lstlisting}
 
 
-为了让程序代码更清爽，这里也把 length{[}{]} 都初始化为 0 ，如此就不必特别处理 array{[}i{]} == 0
-的情况了，相当巧妙。
+为了让程序代码更清爽，这里也把 \texttt{length{[}{]}} 都初始化为 0 ，如此就不必特别处理 \texttt{array{[}i{]}
+== 0} 的情况了，相当巧妙。
 
 \noindent 
 \begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily},breaklines=true]
@@ -4426,7 +4427,7 @@ Optimal Binary Search Tree
 \href{http://www.csie.ntnu.edu.tw/~u91029/Language.html}{Context-free Language: Cocke-Younger-Kasami Algorithm }%
 \end{minipage}}
 
-现今已能在 $O(N\log N)$ 时间内解决 Matrix Chain Multiplication ： http://historical.ncstrl.org/litesite-data/stan/CS-TR-81-875.pdf
+现今已能在 $O(N\log N)$ 时间内解决 Matrix Chain Multiplication ： \url{http://historical.ncstrl.org/litesite-data/stan/CS-TR-81-875.pdf}
 。
 
 \noindent \marginpar{%
@@ -4605,7 +4606,7 @@ ICPC \protect\href{http://livearchive.onlinejudge.org/external/37/3752.pdf}{3752
 西洋棋盘上，请找到一条路线，让位于棋盘上的骑士，刚好经过棋盘上每一格恰一次。
 
 \begin{center}
-\includegraphics[scale=0.3]{images/Turk-knights-tour}
+\includegraphics[scale=0.5]{images/340px-Turk-knights-tour\lyxdot svg}
 \par\end{center}
 
 填答案的原则是：走向出路选择较少的格子。如果遇到出路选择一样多的格子，就走向位于下方的格子。如果又遇到一样低的格子，就走向位于左方的格子。
@@ -4725,8 +4726,8 @@ UVa \protect\href{http://uva.onlinejudge.org/external/100/10037.html}{10037}\end
 \includegraphics[scale=0.5]{images/Greedy10}
 \par\end{center}
 
-改答案的原则是：一开始 x 随意设定一个数值，例如设定 x = 0 。微调 x 值，并且计算 f(x) ──如果 f(x) 减少，就更新
-x ；如果 f(x) 没减少，就不更新 x 。不断修改 x 值，最后就到达区域最小值。
+改答案的原则是：一开始 $x$ 随意设定一个数值，例如设定 $x=0$ 。微调 $x$ 值，并且计算 $f(x)$ ──如果
+$f(x)$ 减少，就更新 $x$ ；如果 $f(x)$ 没减少，就不更新 $x$ 。不断修改 $x$ 值，最后就到达区域最小值。
 
 
 \subsection{范例：交换相邻数字的排序法}
@@ -4741,7 +4742,163 @@ x ；如果 f(x) 没减少，就不更新 x 。不断修改 x 值，最后就到
 
 读者可以想想看：交换任意两个数字的排序法，成立吗？
 
-顺带一提，排序过程反向操作，可以得到一个结论：排序过的阵列，经由两两相邻交换，一定可以得到各种排列方式。
+顺带一提，排序过程反向操作，可以得到一个结论：排序过的数组，经由两两相邻交换，一定可以得到各种排列方式。
+
+
+\subsection{范例：荷兰国旗问题（ Dutch National Flag Problem ）}
+
+\url{http://www.iis.sinica.edu.tw/~scm/ncs/2010/10/dutch-national-flag-problem/}
+
+
+\subsection{范例：工作排程问题（ Single Machine Scheduling, Minimize the Number of Tardy
+Jobs ）（ $1||\sum U_{i}$ ）}
+
+有一位苦命上班族，要马上处理临时指派的 N 份工作。经验老到的他，马上就精准的估计出每份工作各要花掉多少时间，可是每份工作都有不同的完工期限，这造成有些工作可能会来不及完成。他做事专心，要求质量，一次只处理一份工作，一份一份接着做；来不及完成的工作，干脆放弃不做。
+
+请找出一种排程，让如期完成的工作最多（也就是让逾期完成的工作最少），顺便让总工时越短越好。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/Greedy12}
+\par\end{center}
+
+合理排程之相邻交换性质：
+
+一个合理排程，其中某两个如期完成的工作 A 与 B ， A 与 B 紧邻完成， A 早做 B 晚做， A 期限晚 B 期限早（或期限相同），则
+A 与 B 对调位置之后，仍是一个合理排程。分析如下：
+
+\noindent %
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+A与B视作一体进行交换：排程里的其他工作皆不受影响。
+
+A放到B的位置：A的期限比B还晚，B都能如期完成了，所以A也能如期完成。
+
+B放到A的位置：B提早做，更能如期完成。%
+\end{minipage}}
+
+\begin{center}
+\includegraphics[scale=0.5]{images/Greedy13}
+\par\end{center}
+
+一个合理排程，不断地进行相邻交换，终会形成「工作依照期限排序」的合理排程！反之亦然！小心，不相邻则不可贸然交换。
+
+因此，我们只需着眼于「工作依照期限排序」的合理排程。
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/100/10026.html}{10026}
+\protect\href{http://uva.onlinejudge.org/external/100/10026.html}{11389}\end{shaded}%
+\end{minipage}}
+
+填答案的原则是：所有工作依照期限排序，依序加入排程。一次加入一个工作，一旦发现逾期，立即从排程当中抽掉工时最长的工作。
+
+\begin{center}
+\includegraphics[scale=0.5]{images/Greedy14}
+\par\end{center}
+
+\noindent %
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+已经加入$N$个工作，排程里有$M$个工作。
+
+排程里的工作，是前$N$个工作的最佳解。也就是说：
+
+$\alpha$. 这$M$个工作，全部如期完成。
+
+$\beta$. 前$N$个工作之中，如期完成的工作数量最多就是$M$。
+
+$\gamma$. 前$N$个工作之中，这$M$个工作总工时最短。%
+\end{minipage}}
+
+以数学归纳法证明之。假设 $N$ 成立，当第 $N+1$ 个工作加入排程，有两种情况。
+
+一、没有发生逾期：
+
+这 $M$ 个工作，本来就是如期完成、工作数量最多、总工时最短的最佳选择。第 $N+1$ 个工作加入之后， $\alpha\beta\gamma$
+依然成立。
+
+二、发生逾期，立即抽出工时最长的工作：
+
+这 $M$ 个工作，已经能如期完成。抽出工时最长的工作，补上工时稍短（或相等）的第 $N+1$ 个工作，更能如期完成了。 $\alpha$
+成立。
+
+这 $M$ 个工作，总工时已经是最短了，还是无法添加第 $N+1$ 个工作，不得已抽掉一个工作，工作数量已经尽量多了。 $\beta$
+成立。
+
+抽出工时最长的工作，总工时下降最多。 $\gamma$ 成立。
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+struct Job {int time, due;} job[10];
+priority_queue<int> pq;
+
+bool cmp(const Job& j1, const Job& j2)
+{
+    return j1.due < j2.due;
+}
+
+void Moore_Hodgson()
+{
+    sort(job, job+10, cmp);
+
+    int t = 0;
+    for (int i=0; i<10; ++i)
+    {
+        pq.push(job[i].time);
+        t += job[i].time;
+        if (t > job[i].due) t -= pq.top(), pq.pop();
+    }
+
+    cout << "如期完成的工作数量，最多为" << pq.size();
+    cout << "逾期完成的工作数量，至少为" << 10 - pq.size();
+}
+\end{lstlisting}
+
+
+\noindent \rule[0.5ex]{0.7\columnwidth}{1pt}
+
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+struct Job
+{
+    int time, due;
+    bool operator<(const Job& j) const
+    {
+        return due < j.due;
+    }
+} job[10];
+
+int heap[10], size = 0;
+
+void Moore_Hodgson()
+{
+    sort(t, t+10);
+
+    int t = 0;
+    for (int i=0; i<10; ++i)
+    { 
+        heap[size++] = job[i].time;
+        push_heap(heap, heap+size);
+        t += job[i].time;
+
+        if (t > job[i].due)
+        {
+            t -= heap[0];
+            pop_heap(heap, heap+size);
+            size--;
+        }
+    }
+
+    cout << "如期完成的工作数量，最多为" << size;
+    cout << "逾期完成的工作数量，至少为" << 10 - size;
+}
+\end{lstlisting}
+
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/101/10154.html}{10154}
+ICPC \protect\href{http://livearchive.onlinejudge.org/external/32/3277.pdf}{3277}
+\protect\href{http://livearchive.onlinejudge.org/external/48/4850.pdf}{4850}\end{shaded}%
+\end{minipage}}
 
 \noindent \clearpage{}
 \end{document}
