@@ -1,7 +1,6 @@
 %% LyX 2.1.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[a4paper,UTF8,winfonts]{ctexbook}
-\usepackage[T1]{fontenc}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 \usepackage{color}
@@ -174,13 +173,13 @@ X 轴，直向为 Y 轴，那么「人」其实是 (0,1) 、 (1,2) 、 (2,3) 、
 \shadowbox{\begin{minipage}[t]{1\columnwidth}%
 加法的算法
 
-a --- {[} {]} ---> c 
+a --- {[} {]} ---\textgreater{} c 
 
 b ---
 
 例如
 
-5 --- {[} {]} ---> 8 
+5 --- {[} {]} ---\textgreater{} 8 
 
 3 --- %
 \end{minipage}}
@@ -3021,7 +3020,7 @@ UVa \protect\href{http://uva.onlinejudge.org/external/100/10077.html}{10077}\end
 \noindent 2014/1/11 at 9:00\\
 
 
-\noindent 分享一下最近看到的技巧 – “marriage-before-conquest\textquotedbl{}
+\noindent 分享一下最近看到的技巧 – “marriage-before-conquest\char`\"{}
 
 \noindent 在做Divide and conquer中，递归求解的部份解答可以用来加速剩下的计算。\\
 
@@ -3617,7 +3616,7 @@ count(i-1,j)+count(i,j-1) & \mathrm{if\ }0<i<8\ \mathrm{and\ }0<j<8\\
 \end{cases}$\\
 
 
-$count(i,j)$：从格子 (0, 0) 走到格子 (i, j) 的走法数目。%
+$count(i,j)$：从格子 $(0,0)$ 走到格子 $(i,j)$ 的走法数目。%
 \end{minipage}}
 
 \begin{center}
@@ -4338,13 +4337,134 @@ $O(H*W)$ 。
 此外，为了方便起见，我们直接从倒数第二行开始执行。
 
 
+\subsection{Largest Empty Square}
+
+
+\subsubsection{问题描述（离散版本）}
+
+跟 Largest Empty Rectangle 类似，只是改为找正方形而已。
+
+
+\subsubsection{Recurrence}
+
+\noindent %
+\fbox{\begin{minipage}[t]{1\columnwidth}%
+$area(i,j)=\begin{cases}
+0 & \mathrm{if\ }i<0\ \mathrm{or\ }j<0\\
+\min\{area(i-1,j),area(i,j-1),area(i-1,j-1)\}+1 & \mathrm{if\ }i\geq0\ \mathrm{or\ }j\geq0\ \mathrm{and\ }(i,j)\ \mathrm{is\ empty}\\
+0 & \mathrm{if\ }i\geq0\ \mathrm{or\ }j\geq0\ \mathrm{and\ }(i,j)\ \mathrm{is\ blocked}
+\end{cases}$
+
+$area(i,j)$：右下角顶点为$(i,j)$的最大正方形的面积。%
+\end{minipage}}
+
+重点在于：
+
+\[
+area(i,j)=\min\{area(i-1,j),area(i,j-1),area(i-1,j-1)\}+1
+\]
+
+
+\begin{center}
+\includegraphics[scale=0.5]{images/LargestEmptySquare}
+\par\end{center}
+
+
+\subsubsection{复杂度}
+
+时间复杂度为 $O(H*W)$ ，空间复杂度为 $O(\min(H,W))$ 。
+
+
+\subsubsection{程序代码}
+
+\noindent 
+\begin{lstlisting}[language={C++},numbers=left,basicstyle={\ttfamily}]
+bool array[10+1][10+1]; // 空敞处为true，有障碍物则为false。
+int area[10+1][10+1];   // 初始化为零
+
+int largest_empty_square()
+{
+    int a = 0;
+
+    for (int i=1; i<=10; ++i)
+        for (int j=1; j<=10; ++j)
+        {
+            if (array[i][j])
+                area[i][j] = min(
+                    area[i-1][j],
+                    area[i][j-1],
+                    area[i-1][j-1]
+                ) + 1;
+
+            if (area[i][j] > a) // 纪录最大值
+                a = area[i][j];
+        }
+
+    return a;
+}
+\end{lstlisting}
+
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/109/10908.html}{10908}\end{shaded}%
+\end{minipage}}
+
+
+\subsection{Maximum Subarray}
+
+
+\subsubsection{Maximum Subarray}
+
+最大区间和。从数列当中取出一连串数字，求其总和；找出最大的总和。最糟糕的情况，就是不取任何数字，总和为零。
+
+\[
+4,-5,\underbrace{{4,-3,4,4,-4,4}}_{11},-5
+\]
+
+
+总和最大的区间，可能不只一种。
+
+\noindent \marginpar{%
+\begin{minipage}[t]{10em}%
+\begin{shaded}%
+UVa \protect\href{http://uva.onlinejudge.org/external/5/507.html}{507}
+\protect\href{http://uva.onlinejudge.org/external/106/10684.html}{10684}
+\protect\href{http://uva.onlinejudge.org/external/1/108.html}{108}
+\protect\href{http://uva.onlinejudge.org/external/8/836.html}{836}
+\protect\href{http://uva.onlinejudge.org/external/108/10827.html}{10827}
+\protect\href{http://uva.onlinejudge.org/external/107/10755.html}{10755}\end{shaded}%
+\end{minipage}}
+
+
+\subsubsection{算法（ Enumeration ）}
+
+穷举区间的起点、终点，计算总和，时间复杂度是 $O(N^{3})$。
+
+
+\subsubsection{算法（ Dynamic Programming ）}
+
+\noindent %
+\fbox{\begin{minipage}[t]{1\columnwidth}%
+$sum(i)=\begin{cases}
+0 & \mathrm{if\ }i<0\\
+sum(i-1)+array[i] & \mathrm{if\ }i\geq0\ \mathrm{and\ }sum(i-1)+array[i]>0\\
+0 & \mathrm{if\ }i\geq0\ \mathrm{and\ }sum(i-1)+array[i]\leq0
+\end{cases}$
+
+$sum(i)$：以第$i$格作为结尾的Maximum Subarray的元素总和。%
+\end{minipage}}
+
+时间复杂度是 $O(N)$ 。存储全部问题的答案，空间复杂度是 $O(N)$ ；只想计算一个特定问题的答案，可以精简至 $O(1)$
+。
+
+
 \subsection{范例}
 
 \noindent %
 \begin{minipage}[t]{1\columnwidth}%
 \begin{shaded}%
-Maximum Subarray
-
 1D p-Center Problem
 
 Longest Increasing Subsequence
